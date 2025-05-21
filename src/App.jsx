@@ -7,7 +7,8 @@ import { Contacts } from "./pages/Contacts";
 import EmailForm from "./pages/EmailForm";
 import Dedication from "./pages/Dedications";
 import Logo from "./pages/Logo";
-import Berita from "./pages/Berita";
+import Departments from "./pages/Departments";
+import { DepartmentDetails } from "./pages/DepartmentDetails";
 
 function App() {
   return (
@@ -18,10 +19,13 @@ function App() {
         <Route path="contact" element={<Contacts />} />
         <Route path="dedication" element={<Dedication />} />
         <Route path="logo" element={<Logo />} />
+        <Route path="be" element={<Departments />} />
+        <Route path="dp" element={<Departments />} />
         <Route path="*" element={<h1>Under Construction :D</h1>} />
-        <Route path="/berita" element={<Berita />} />
       </Route>
       <Route path="/contact/submit" element={<EmailForm />}></Route>
+      <Route path="/be/:slug" element={<DepartmentDetails />}></Route>
+      <Route path="/dp/:slug" element={<DepartmentDetails />}></Route>
     </Routes>
   );
 }
