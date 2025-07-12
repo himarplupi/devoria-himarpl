@@ -4,6 +4,7 @@ import { api } from "../services/apiService";
 import AnimatedLongText from "../components/AnimatedLongText";
 import AnimatedLongText2 from "../components/AnimatedLongText2";
 import { CardKepengurusan } from "../components/CardKepengurusan";
+import Transition from "@/components/Transition";
 
 export const Departments = () => {
   const location = useLocation();
@@ -79,29 +80,32 @@ export const Departments = () => {
   }
 
   return (
-    <div id="departments" className="bg-[url(/bg/Bg-Low.png)] pt-[68px] flex flex-col items-center pb-[50px] w-full">
-      <div className="flex flex-col items-center lg:w-[1210px] w-[343px] lg:gap-8 gap-6">
-        <AnimatedLongText className="lg:text-7xl text-[32px] text-center text-[#4B4B4B] font-semibold" text={"STRUKTUR KEPENGURUSAN"} />
-        <div className="bg-black">
-          <AnimatedLongText className="lg:text-8xl text-[32px] text-center text-white font-bold" text={title} />
+    <>
+      <Transition />
+      <div id="departments" className="bg-[url(/bg/Bg-Low.png)] pt-[68px] flex flex-col items-center pb-[50px] w-full">
+        <div className="flex flex-col items-center lg:w-[1210px] w-[343px] lg:gap-8 gap-6">
+          <AnimatedLongText className="lg:text-7xl text-[32px] text-center text-[#4B4B4B] font-semibold" text={"STRUKTUR KEPENGURUSAN"} />
+          <div className="bg-black">
+            <AnimatedLongText className="lg:text-8xl text-[32px] text-center text-white font-bold" text={title} />
+          </div>
+          <AnimatedLongText className="lg:text-4xl text-2xl text-center text-[#4B4B4B] font-semibold lg:tracking-widest" text={"HIMARPL UNIVERSITAS PENDIDIKAN INDONESIA"} />
+          <AnimatedLongText2 className="lg:text-5xl text-2xl text-center text-[#4B4B4B] font-medium tracking-wider" text={"2025"} />
+          <AnimatedLongText className=" text-center text-black font-light" text={description} />
         </div>
-        <AnimatedLongText className="lg:text-4xl text-2xl text-center text-[#4B4B4B] font-semibold lg:tracking-widest" text={"HIMARPL UNIVERSITAS PENDIDIKAN INDONESIA"} />
-        <AnimatedLongText2 className="lg:text-5xl text-2xl text-center text-[#4B4B4B] font-medium tracking-wider" text={"2025"} />
-        <AnimatedLongText className=" text-center text-black font-light" text={description} />
+        {error && (
+          <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 my-4" role="alert">
+            <p>Note: Using fallback data. API error: {error}</p>
+          </div>
+        )}
+        <div className="flex items-center justify-center w-full pt-5 mx-4">
+          <div className="flex flex-row flex-wrap lg:gap-x-48 lg:gap-y-28 justify-center my-10 lg:w-[1000px] w-[343px] gap-[55px]">
+            {kepengurusanData.map((item, index) => (
+              <CardKepengurusan key={index} img={item.image} department={item.acronym?.toUpperCase()} nama={item.nama?.toUpperCase()} deptType={type} />
+            ))}
+          </div>
+        </div>
       </div>
-      {error && (
-        <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 my-4" role="alert">
-          <p>Note: Using fallback data. API error: {error}</p>
-        </div>
-      )}
-      <div className="flex items-center justify-center w-full pt-5 mx-4">
-        <div className="flex flex-row flex-wrap lg:gap-x-48 lg:gap-y-28 justify-center my-10 lg:w-[1000px] w-[343px] gap-[55px]">
-          {kepengurusanData.map((item, index) => (
-            <CardKepengurusan key={index} img={item.image} department={item.acronym?.toUpperCase()} nama={item.nama?.toUpperCase()} deptType={type} />
-          ))}
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

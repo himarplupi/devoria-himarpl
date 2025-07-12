@@ -1,3 +1,4 @@
+import Transition from "@/components/Transition";
 import AnimatedImage from "../components/AnimatedImage";
 import AnimatedLongText from "../components/AnimatedLongText";
 import AnimatedText from "../components/AnimatedText";
@@ -49,30 +50,33 @@ export default function Logo() {
   ];
 
   return (
-    <div className="flex flex-col items-center mx-auto lg:w-[1206px] pt-[80px]">
-      <AnimatedLongText className="font-bold lg:text-8xl text-[40px] lg:pt-16 pt-10" text="FILOSOFI LOGO" />
+    <>
+      <Transition />
+      <div className="flex flex-col items-center mx-auto lg:w-[1206px] pt-[80px]">
+        <AnimatedLongText className="font-bold lg:text-8xl text-[40px] lg:pt-16 pt-10" text="FILOSOFI LOGO" />
 
-      <div className="flex flex-col items-center lg:gap-[100px] gap-[64px] lg:mt-[155px] mt-[64px] w-full">
-        {logoPhilosophy.map((item, index) => (
-          <div className="flex lg:flex-row flex-col items-center w-full lg:gap-auto gap-6 lg:justify-between justify-center" key={index}>
-            <AnimatedImage src={item.img} alt="logo" className="lg:w-[262px] w-[120px]" animationType="slideRight" />
+        <div className="flex flex-col items-center lg:gap-[100px] gap-[64px] lg:mt-[155px] mt-[64px] w-full">
+          {logoPhilosophy.map((item, index) => (
+            <div className="flex lg:flex-row flex-col items-center w-full lg:gap-auto gap-6 lg:justify-between justify-center" key={index}>
+              <AnimatedImage src={item.img} alt="logo" className="lg:w-[262px] w-[120px]" animationType="slideRight" />
 
-            <AnimatedLongText className="lg:text-base/[31px] text-base/[24px] text-[#404040] lg:w-[784px] w-[343px] lg:text-start text-center" text={item.desc} />
-          </div>
-        ))}
+              <AnimatedLongText className="lg:text-base/[31px] text-base/[24px] text-[#404040] lg:w-[784px] w-[343px] lg:text-start text-center" text={item.desc} />
+            </div>
+          ))}
+        </div>
+
+        <AnimatedLongText className="font-bold lg:text-8xl text-[40px] mt-[100px] text-center" text="FILOSOFI LOGO KABINET" />
+
+        <div className="flex  flex-col items-center lg:gap-[140px] gap-[64px] lg:mt-[155px] my-[64px] w-full">
+          {cabinetLogoPhilosophy.map((item, index) => (
+            <div className="flex lg:flex-row flex-col items-center w-full lg:gap-auto gap-6 justify-between" key={index}>
+              <AnimatedImage src={item.img} alt="logo" className="lg:w-[300px] w-[120px]" animationType="slideRight" />
+
+              <AnimatedLongText className="lg:text-base/[31px] text-base/[24px] text-[#404040] lg:w-[784px] w-[343px] lg:text-start text-center" text={item.desc} />
+            </div>
+          ))}
+        </div>
       </div>
-
-      <AnimatedLongText className="font-bold lg:text-8xl text-[40px] mt-[100px] text-center" text="FILOSOFI LOGO KABINET" />
-
-      <div className="flex  flex-col items-center lg:gap-[140px] gap-[64px] lg:mt-[155px] my-[64px] w-full">
-        {cabinetLogoPhilosophy.map((item, index) => (
-          <div className="flex lg:flex-row flex-col items-center w-full lg:gap-auto gap-6 justify-between" key={index}>
-            <AnimatedImage src={item.img} alt="logo" className="lg:w-[300px] w-[120px]" animationType="slideRight" />
-
-            <AnimatedLongText className="lg:text-base/[31px] text-base/[24px] text-[#404040] lg:w-[784px] w-[343px] lg:text-start text-center" text={item.desc} />
-          </div>
-        ))}
-      </div>
-    </div>
+    </>
   );
 }

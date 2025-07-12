@@ -259,13 +259,13 @@ export default function MainLayout() {
 
         <footer className="w-full bg-[#232323] lg:pb-5 pb-4 lg:pt-14 pt-5 lg:px-[72px] px-4 flex flex-col">
           <div className="flex flex-row items-center justify-between border-b border-[#B2B2B2] pb-5">
-            <div className="flex flex-col items-start justify-between lg:h-[194px]">
+            <div className="flex flex-col items-start justify-between md:h-[194px]">
               <img src="/himarpl/logo hima.png" alt="HIMARPL" className="max-w-[200px]" />
               <div className="lg:w-[416px] w-[343px]">
                 <p className="text-white lg:text-base/[24px] text-[12px]/[24px]">Himpunan Mahasiswa Rekayasa Perangkat Lunak Universitas Pendidikan Indonesia </p>
               </div>
 
-              <div className="lg:hidden flex mt-9 flex-row gap-[64px]">
+              <div className="md:hidden flex mt-9 flex-row gap-[64px]">
                 <div className="flex flex-col gap-6">
                   <div className="flex flex-row gap-4">
                     {sosmedLinks.map((link, i) => (
@@ -299,7 +299,7 @@ export default function MainLayout() {
                 </div>
               </div>
 
-              <div className="lg:flex hidden flex-col gap-2">
+              <div className="md:flex hidden flex-col gap-2">
                 <div className="flex flex-row gap-4">
                   <Icon icon="mdi:email-outline" className="text-white w-6 h-6" />
                   <div className="relative group transition-all ">
@@ -321,7 +321,7 @@ export default function MainLayout() {
               </div>
             </div>
 
-            <div className="lg:flex hidden flex-row gap-16">
+            <div className="md:flex hidden flex-row gap-16">
               {footerLinks.map((section, i) => (
                 <div key={i} className="flex flex-col gap-4">
                   {section.map((link, j) => (

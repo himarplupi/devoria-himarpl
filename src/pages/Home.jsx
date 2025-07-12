@@ -17,6 +17,7 @@ import NewsMarquee from "../components/NewsMarquee";
 import { motion as Motion } from "motion/react";
 import { HyperText } from "@/components/magicui/hyper-text";
 import SEO from "@/lib/seo";
+import Transition from "@/components/Transition";
 
 const duration = 0.6;
 const delay = 0;
@@ -47,9 +48,10 @@ export default function Home() {
   return (
     <>
       <SEO />
+      <Transition />
       <div id="home" className="pt-[80px] bg-white ">
         <div className="relative">
-          <div className="flex lg:flex-row flex-col lg:gap-32 gap-4 lg:items-center items-start  lg:w-[1220px] lg:mx-[110px] mx-4">
+          <div className="flex md:flex-row flex-col lg:gap-32 gap-4 md:items-center justify-between items-start  lg:w-[1220px] lg:mx-[110px] mx-4">
             <div className="lg:max-w-[555px] flex flex-col gap-2">
               {/* <AnimatedText text="HIMARPL" className="font-bold text-[40px]/[64px] lg:text-[56px]/[64px]" /> */}
               <h1 className="sr-only">HIMARPL</h1>
@@ -61,7 +63,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="lg:w-[580px] w-[343px]">
+            <div className="lg:w-[580px] md:w-[380px] w-[343px]">
               <AnimatedLongText
                 text="<b>Kabinet Devoria</b> adalah struktur kepengurusan Himpunan Mahasiswa Rekayasa Perangkat Lunak (HIMARPL) Universitas Pendidikan Indonesia (UPI) Kampus Cibiru untuk periode tahun 2025."
                 className="text-base/[24px]"
@@ -70,12 +72,16 @@ export default function Home() {
           </div>
 
           <div className="lg:mt-8 mt-6 relative lg:mb-[75px] mb-[48px]">
-            <AnimatedImage src="/himarpl/fullteam.jpeg" alt="Kabinet Devoria" loading="lazy" className="lg:w-[1220px] lg:mx-[110px] mx-4 w-[343px] rounded-3xl z-10" />
+            <AnimatedImage src="/himarpl/fullteam.jpeg" alt="Kabinet Devoria" loading="lazy" className="lg:w-[1220px] md:w-[680px] lg:mx-[110px] mx-4 w-[343px] rounded-3xl z-10" />
 
-            <img src="/himarpl/HIMARPL.svg" alt="HIMARPL" className="lg:w-[1210px] w-[313px] absolute lg:top-[550px] lg:left-[130px] xl:left-[120px] top-[157px] left-[33px] z-20" />
-            <AnimatedText style={textScrollDown} className="absolute lg:text-[16px] text-[8px] lg:tracking-[28px] tracking-[8px] top-0 xl:left-[84px] lg:left-11 left-0 font-bold" text="scrolldown" />
+            <img src="/himarpl/HIMARPL.svg" alt="HIMARPL" className="lg:w-[1210px] md:w-[660px] w-[313px] absolute lg:top-[550px] md:top-[305px] lg:left-[130px] xl:left-[120px] top-[157px] left-[33px] z-20" />
+            <AnimatedText style={textScrollDown} className="absolute md:text-[16px] text-[8px] lg:tracking-[28px] md:tracking-[18px] tracking-[8px] top-0 xl:left-[84px] lg:left-11 md:-left-2 left-0 font-bold" text="scrolldown" />
 
-            <AnimatedText style={textScrollDown} className="absolute lg:text-[16px] text-[8px] lg:tracking-[28px] lg:-bottom-[28px] xl:right-[84px] tracking-[8px] bottom-0 lg:right-11 right-0 font-bold" text="scrolldown" />
+            <AnimatedText
+              style={textScrollDown}
+              className="absolute md:text-[16px] text-[8px] lg:tracking-[28px] md:tracking-[18px] lg:-bottom-[28px] xl:right-[84px] tracking-[8px] bottom-0 lg:right-11 md:-right-2 right-0 font-bold"
+              text="scrolldown"
+            />
           </div>
         </div>
       </div>
@@ -93,8 +99,8 @@ export default function Home() {
 
       <Berita />
 
-      <div className="bg-[#ffe867] w-full flex justify-center lg:flex-row flex-col items-center lg:px-[58px] py-[45px] xl:gap-3 lg:gap-[42px] gap-[28px] z-10 ">
-        <Marquee className="lg:!hidden w-full flex flex-row justify-between  items-center !overflow-visible">
+      <div className="bg-[#ffe867] w-full flex justify-center md:flex-row flex-col items-center lg:px-[58px] py-[45px] xl:gap-3 lg:gap-[42px] gap-[28px] z-10 ">
+        <Marquee className="md:!hidden w-full flex flex-row justify-between  items-center !overflow-visible">
           {[0, 1, 2, 3].map((i) => (
             <div className="relative " key={i}>
               <div className="bg-[#ffe867]  lg:h-[110px] py-1 px-[10px] lg:w-auto w-[100px] flex items-center z-10">
@@ -117,7 +123,7 @@ export default function Home() {
           ))}
         </Marquee>
 
-        <div className="relative lg:block hidden">
+        <div className="relative md:block hidden">
           <div className="bg-[#ffe867]  lg:h-[110px] py-1 px-[10px] lg:w-auto w-[100px] flex items-center z-10">
             <p className="text-[#886D00] lg:text-[128px]/[180px] text-[40px]/[28px] font-bold">VISI</p>
           </div>
@@ -136,9 +142,9 @@ export default function Home() {
           </p>
         </div>
 
-        <img src="/himarpl/Group 247.svg" alt="HIMARPL" className="xl:w-[618px] lg:w-[718px] w-[164px]" />
+        <img src="/himarpl/Group 247.svg" alt="HIMARPL" className="xl:w-[618px] lg:w-[718px] md:w-[418px] w-[164px]" />
 
-        <Marquee className="lg:!hidden w-full flex flex-row justify-between  items-center !overflow-visible" direction="right">
+        <Marquee className="md:!hidden w-full flex flex-row justify-between  items-center !overflow-visible" direction="right">
           {[0, 1, 2, 3].map((i) => (
             <div className="relative " key={i}>
               <div className="bg-[#ffe867]  lg:h-[110px] py-1 px-[10px] lg:w-auto w-[100px] flex items-center z-10">
@@ -160,7 +166,7 @@ export default function Home() {
             </div>
           ))}
         </Marquee>
-        <div className="relative lg:block hidden">
+        <div className="relative md:block hidden">
           <div className="bg-[#ffe867]  lg:h-[110px] py-1 px-[10px] lg:w-auto w-[100px] flex items-center z-10">
             <p className="text-[#886D00] lg:text-[128px]/[180px] text-[40px]/[28px] font-bold">MISI</p>
           </div>
@@ -234,7 +240,7 @@ function Dedication() {
       <img src="/ornaments/Vector 67.svg" alt="vector" className="lg:w-[237px] w-[190px] absolute -top-[90px] right-0 -z-10" />
       <img src="/ornaments/Group 245.svg" alt="pixel" className="lg:w-[672px] w-[300px] absolute top-[280px] -z-10" />
       <img src="/ornaments/Vector 50.svg" alt="vector" className="lg:w-[306px] w-[250px] absolute bottom-0 left-0 -z-10" />
-      <div className="flex flex-col justify-center items-center lg:gap-8 gap-6 lg:w-[619px] w-[343px]">
+      <div className="flex flex-col justify-center items-center lg:gap-8 gap-6 lg:w-[619px] md:w-[500px] w-[343px]">
         <AnimatedLongText2 text="Dedikasi Kami" className="lg:text-8xl/[54px] text-white text-center text-[64px]/[72px] z-10" />
 
         <AnimatedLongText
@@ -243,7 +249,7 @@ function Dedication() {
         />
       </div>
 
-      <div className="lg:flex hidden flex-row items-center lg:gap-10 xl:gap-4 justify-evenly lg:w-[1280px] xl:w-[1220px] lg:mt-[103px] mt-8 z-10 overflow-x-scroll">
+      <div className="md:flex hidden flex-row items-center lg:gap-10 xl:gap-4 gap-2 justify-evenly lg:w-[1280px] xl:w-[1220px] lg:mt-[103px] mt-8 z-10 overflow-x-scroll">
         {dedikasiItems.map((item, index) => (
           <CardDedication key={index} index={index} img={item.img} bgColor={item.bgColor} title={item.title} />
         ))}
@@ -253,7 +259,7 @@ function Dedication() {
         modules={[Autoplay, Navigation]}
         spaceBetween={20}
         slidesPerView="auto"
-        className="lg:!hidden w-[343px] z-10 px-4 lg:mt-[103px] mt-8"
+        className="md:!hidden w-[343px] z-10 px-4 lg:mt-[103px] mt-8"
         centeredSlides={true}
         autoplay={{
           delay: 3500,
@@ -281,14 +287,14 @@ function Dedication() {
 function Berita() {
   return (
     <div id="berita" className="bg-white lg:py-20 py-10 flex flex-col items-center justify-between">
-      <div className="relative flex lg:flex-row flex-col-reverse items-center justify-between max-w-[1220px] lg:gap-20 gap-6">
-        <div className="border w-[343px] cursor-pointer bg-white h-14 flex lg:hidden justify-center items-center py-4 px-6 rounded-[64px] z-10 mb-10 hover:scale-110 transition duration-300">
+      <div className="relative flex md:flex-row flex-col-reverse items-center justify-between max-w-[1220px] lg:gap-20 gap-6">
+        <div className="border w-[343px] cursor-pointer bg-white h-14 flex md:hidden justify-center items-center py-4 px-6 rounded-[64px] z-10 mb-10 hover:scale-110 transition border-black duration-300">
           <Link to="/berita" className=" text-[16px]/[24px] ">
             <p className=" w-[206px] h-14 py-4 px-6 rounded-[64px]">Lihat Semua Berita</p>
           </Link>
         </div>
 
-        <AnimatedImage src="/news/berita.jpg" alt="Berita" className="lg:w-[576px] lg:h-[612px] w-[343px] h-[200px] object-cover rounded-3xl" animationType="slideRight" />
+        <AnimatedImage src="/news/berita.jpg" alt="Berita" className="lg:w-[576px] lg:h-[612px] md:w-[290px] w-[343px] md:h-[400px] h-[200px]  object-cover rounded-3xl" animationType="slideRight" />
 
         <div className="flex flex-col justify-center lg:w-[580px] w-[343px]">
           <img src="/ornaments/Group 241.svg" alt="pixel" className="absolute max-w-[72px] lg:top-0 top-40 right-0" />
@@ -297,11 +303,11 @@ function Berita() {
           <AnimatedLongText className="lg:text-[64px]/[72px] text-[40px] !min-w-[343px] font-semibold" text="Akses Berita Aktual RPL di Sini." />
 
           <AnimatedLongText
-            className="mt-6 lg:mb-10 min-w-[343px]"
+            className="mt-6 lg:mb-10 md:mb-5 min-w-[343px]"
             text="<b>Kabinet Devoria</b> adalah struktur kepengurusan Himpunan Mahasiswa Rekayasa Perangkat Lunak (HIMARPL) Universitas Pendidikan Indonesia (UPI) Kampus Cibiru untuk periode tahun 2025."
           />
 
-          <div className="border w-[206px] h-14 lg:flex hidden justify-center items-center py-4 px-6 cursor-pointer rounded-[64px] hover:scale-110 transition duration-300">
+          <div className="border border-black w-[206px] h-14 md:flex hidden justify-center items-center py-4 px-6 cursor-pointer rounded-[64px] hover:scale-110 transition duration-300">
             <Link to="/berita" className=" text-[16px]/[24px] ">
               <p className="bg-transparent w-[206px] h-14 py-4 px-6 rounded-[64px]">Lihat Semua Berita</p>
             </Link>
@@ -324,7 +330,7 @@ function VisiMisi() {
         viewport={{ once: true, margin: "0px 0px -130px 0px", amount: threshold }}
         transition={{ duration, delay }}
         variants={animations}
-        className="flex flex-col lg:rounded-3xl pb-4 rounded-lg lg:w-[1220px] w-[343px] gap-4 lg:h-[300px]  lg:border-8 border-4 border-[#FF4B4B]"
+        className="flex flex-col lg:rounded-3xl pb-4 rounded-lg lg:w-[1220px] md:w-[600px] w-[343px] gap-4 lg:h-[300px]  lg:border-8 border-4 border-[#FF4B4B]"
       >
         <div className="flex flex-row items-center justify-between bg-[#FF4B4B] lg:gap-96  rounded-t-[4px] max-w-full lg:px-6 lg:py-4 px-4 py-2">
           <h4 className="text-white lg:text-[40px] text-base">Visi</h4>
@@ -346,7 +352,7 @@ function VisiMisi() {
         viewport={{ once: true, margin: "0px 0px -130px 0px", amount: threshold }}
         transition={{ duration, delay }}
         variants={animations}
-        className="flex flex-col lg:rounded-3xl rounded-lg lg:w-[1220px] w-[343px] gap-4 lg:h-[460px] lg:pb-5 pb-4 lg:border-8 border-4 border-[#5573FF] lg:mb-[96px] mb-10 bg-[#10316B]"
+        className="flex flex-col lg:rounded-3xl rounded-lg lg:w-[1220px] md:w-[600px] w-[343px] gap-4 lg:h-[460px] lg:pb-5 pb-4 lg:border-8 border-4 border-[#5573FF] lg:mb-[96px] mb-10 bg-[#10316B]"
       >
         <div className="flex flex-row items-center justify-between bg-[#5573FF] lg:gap-96  rounded-t-[4px] max-w-full lg:px-6 lg:py-4 px-4 py-2">
           <h4 className="text-white lg:text-[40px] text-base">Misi</h4>
@@ -393,19 +399,19 @@ function Sejarah() {
     <div id="journey" className="bg-[#10316B] w-full  items-center lg:gap-[135px] gap-[88px] flex flex-col justify-center lg:py-[68px] pt-[40px] pb-8">
       <AnimatedLongText2 className="text-white lg:text-8xl text-[64px]/[72px] text-center" text="Perjalanan HIMARPL" />
 
-      <div className="w-full h-[600px] flex flex-col items-center justify-center relative bg-[#0B409C] gap-14">
+      <div className="w-full lg:h-[600px] h-fit flex flex-col items-center justify-center relative bg-[#0B409C] gap-14">
         <img src="/ornaments/Group 253.svg" alt="pixel" className="absolute lg:w-[128px] lg:-top-28 -top-11 w-[88px] left-0" />
         <img src="/ornaments/Group 253.svg" alt="pixel" className="absolute lg:w-[128px] w-[88px] lg:-top-28 -top-11  right-0 scale-x-[-1]" />
 
         <div className="bg-[#FFE867] h-2 w-[1084px]"></div>
-        <div className="bg-[#F2F7FF] w-full h-[400px] flex items-center justify-center relative">
+        <div className="bg-[#F2F7FF] w-full lg:h-[400px] md:h-[600px] h-[400px]  flex items-center justify-center relative">
           <p className=" absolute lg:text-[300px] select-none text-[64px]" style={textStyle1}>
             KABINET
           </p>
           <Swiper
             modules={[Autoplay]}
             spaceBetween={20}
-            className="lg:!hidden w-auto flex items-center justify-center "
+            className="md:!hidden w-auto flex items-center justify-center "
             centeredSlides={true}
             autoplay={{
               delay: 3500,
@@ -428,7 +434,7 @@ function Sejarah() {
             })}
           </Swiper>
 
-          <div className=" xl:w-[1220px] lg:w-[1312px] lg:flex hidden items-center justify-between ">
+          <div className=" xl:w-[1220px] lg:w-[1312px] md:flex md:w-[600px] hidden items-center justify-between lg:gap-0 gap-8 flex-wrap ">
             {cabinets.map((cabinet, index) => {
               return (
                 // ntar animasiin elemennya aja
@@ -439,9 +445,9 @@ function Sejarah() {
                   transition={{ duration, delay }}
                   variants={animations}
                   key={index}
-                  className="flex flex-col items-center justify-center gap-[64px] z-10 hover:cursor-pointer hover:scale-110 transform duration-300 ease-out"
+                  className="flex flex-col  items-center justify-center lg:gap-[64px] md:gap-10 z-10 hover:cursor-pointer hover:scale-110 transform duration-300 ease-out"
                 >
-                  <img src={cabinet.src} alt={cabinet.alt} className="max-h-[128px] w-full" />
+                  <img src={cabinet.src} alt={cabinet.alt} className="max-h-[128px]  w-full" />
 
                   <div className="flex flex-col items-center justify-center gap-2">
                     <p className="font-semibold text-2xl">{cabinet.name}</p>
