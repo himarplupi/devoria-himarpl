@@ -2,7 +2,6 @@ import { motion as Motion } from "motion/react";
 import { AnimatePresence } from "motion/react";
 
 export default function Transition() {
-  console.log("hi aku");
   return (
     <>
       <Motion.div
