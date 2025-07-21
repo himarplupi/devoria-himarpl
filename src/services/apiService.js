@@ -15,7 +15,7 @@ export { api };
 // Fetch department details by type and acronym
 export const fetchDepartmentDetails = async (type, acronym) => {
   try {
-    const response = await axios.get(`/api/departments?type=${type}&year=2025&acronym=${acronym}`);
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}/departments?type=${type}&year=2025&acronym=${acronym}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching department details:", error);
@@ -25,7 +25,7 @@ export const fetchDepartmentDetails = async (type, acronym) => {
 
 export const fetchDepartmentStaff = async (departmentId) => {
   try {
-    const response = await axios.get(`/api/users?departmentIds=${departmentId}`);
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}/users?departmentIds=${departmentId}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching department staff:", error);
