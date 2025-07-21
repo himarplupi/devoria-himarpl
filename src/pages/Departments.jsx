@@ -23,10 +23,12 @@ export const Departments = () => {
         setError(null);
 
         // Use the configured API instance from apiService
+        const API = import.meta.env.VITE_API_URL;
+        console.log(API);
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/departments?limit=50&type=${type}&year=2025`
         );
-        console.log(response.data.data);
+        console.log(response.data);
 
         const data = response.data;
         setKepengurusanData(data.data || []);
