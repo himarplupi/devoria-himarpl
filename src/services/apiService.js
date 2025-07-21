@@ -25,7 +25,7 @@ export const fetchDepartmentDetails = async (type, acronym) => {
 
 export const fetchDepartmentStaff = async (departmentId) => {
   try {
-    const response = await axios.get(`${import.meta.env.VITE_API_URL}/users?departmentIds=${departmentId}`);
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}/users?departmentIds=${departmentId}&limit=50`);
     return response.data;
   } catch (error) {
     console.error("Error fetching department staff:", error);
