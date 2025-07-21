@@ -25,3 +25,4 @@ tailwind.config.js
 *.sw?
 
 devoria-himarpl-github-action-token.txt
+.env

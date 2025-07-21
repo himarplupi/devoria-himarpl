@@ -23,7 +23,9 @@ export const Departments = () => {
         setError(null);
 
         // Use the configured API instance from apiService
-        const response = await axios.get(`/api/departments?type=${type}&year=2025&limit=50`);
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/departments?limit=50&type=${type}&year=2025`
+        );
         console.log(response.data.data);
 
         const data = response.data;
