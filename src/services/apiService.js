@@ -23,11 +23,17 @@ export const fetchDepartmentDetails = async (type, acronym) => {
   }
 };
 
-export const fetchDepartmentStaff = async (departmentId) => {
+export const fetchDepartmentStaff = async (departmentId, deptName) => {
   try {
+    let check = false;
+    if (["Sekretaris", "Bendahara"].includes(deptName)) {
+      check = true;
+    }
+
+    const position = check ? "" : "staff";
     const [ketuawaketuRes, staffRes] = await Promise.all([
       axios.get(`${import.meta.env.VITE_API_URL}/users?departmentIds=${departmentId}&limit=50&positionNames=ketua%2Cwakil%20ketua&periodYears=2025`),
-      axios.get(`${import.meta.env.VITE_API_URL}/users?departmentIds=${departmentId}&limit=50&positionNames=staff&periodYears=2025`),
+      axios.get(`${import.meta.env.VITE_API_URL}/users?departmentIds=${departmentId}&limit=50&positionNames=${position}&periodYears=2025`),
     ]);
 
     const ketuawaketu = ketuawaketuRes.data.data || [];
