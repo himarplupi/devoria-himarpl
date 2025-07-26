@@ -65,7 +65,7 @@ export const DepartmentDetails = () => {
         });
 
         // Ensure staff data is properly formatted
-        const formattedStaffs = staffResponse.data.map((staff) => ({
+        const formattedStaffs = staffResponse.map((staff) => ({
           ...staff,
           image: String(staff.image || `/kepengurusan/${type}/default.jpg`),
           title: staff.positions && staff.positions.length > 1 ? String(staff.positions[0].name || "STAFF").toUpperCase() : String((staff.positions && staff.positions[0] && staff.positions[0].name) || "STAFF").toUpperCase(),

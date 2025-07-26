@@ -30,10 +30,11 @@ export const fetchDepartmentStaff = async (departmentId) => {
       axios.get(`${import.meta.env.VITE_API_URL}/users?departmentIds=${departmentId}&limit=50&positionNames=staff&periodYears=2025`),
     ]);
 
-    const ketuawaketu = ketuawaketuRes.data || [];
-    const staff = staffRes.data || [];
+    const ketuawaketu = ketuawaketuRes.data.data || [];
+    const staff = staffRes.data.data || [];
 
     const combined = [...ketuawaketu, ...staff];
+    console.log(combined);
     return combined;
   } catch (error) {
     console.error("Error fetching department staff:", error);
