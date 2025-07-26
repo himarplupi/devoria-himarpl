@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 
-export const CardKepengurusan = ({ img, department, nama, deptType }) => {
+export const CardKepengurusan = ({ img, department, nama, deptType, username }) => {
   const location = useLocation();
   const linkRoute = `/${deptType}/${department.toLowerCase()}`;
 
@@ -31,9 +31,9 @@ export const CardKepengurusan = ({ img, department, nama, deptType }) => {
             </div>
           )}
           <div className={`${location.pathname === "/be" || location.pathname === "/dp" ? "hidden" : "flex"} flex flex-row gap-3 `}>
-            <img src="/icons/instagram.svg" alt="instagram" />
-            <img src="/icons/github-logo.svg" alt="github" />
-            <img src="/icons/profile.svg" alt="profile" />
+            <Link to={`https://www.instagram.com/${username}`} target="_blank">
+              <img src="/icons/instagram.svg" alt="instagram" />
+            </Link>
           </div>
         </div>
       </div>
