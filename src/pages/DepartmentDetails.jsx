@@ -111,7 +111,7 @@ export const DepartmentDetails = () => {
 
   return (
     <div id="departmentdetails" className="bg-[url(/bg/Bg-Low.png)] min-h-screen w-full overflow-y-auto pt-[68px] flex flex-col items-center pb-[50px]" ref={scrollRef} style={{ height: "100vh" }}>
-      <div className="flex flex-col items-center lg:w-[1210px] w-[343px] gap-8 relative">
+      <div className="flex flex-col items-center lg:w-[1210px] md:w-[660px] w-[343px] gap-8 relative">
         <div className="w-full">
           <div className="flex gap-4 items-center justify-start cursor-pointer hover:bg-gray-100 rounded-2xl py-1 w-fit" onClick={() => navigate(`/${type}`)}>
             <Icon icon="mingcute:left-line" className="w-10 h-10" />
@@ -128,7 +128,11 @@ export const DepartmentDetails = () => {
             </div>
 
             <div className="max-w-fit flex flex-col justify-center items-center rounded-2xl overflow-hidden">
-              <img src={String(departmentDetails.image)} alt={String(departmentDetails.acronym)} className={`w-full  rounded-t-2xl h-[600px] object-cover object-[center_-0%] ${!departmentDetails.image ? "bg-[#6C6C6C] " : ""}`} />
+              <img
+                src={String(departmentDetails.image)}
+                alt={String(departmentDetails.acronym)}
+                className={`w-full  rounded-t-2xl md:h-[600px] h-[200px] object-cover object-[center_-0%] ${!departmentDetails.image ? "bg-[#6C6C6C] " : ""}`}
+              />
               <div className="flex flex-col justify-center items-center w-full rounded-b-2xl bg-[#000000] z-10 opacity-80">
                 <h2 className="rounded-b-2xl p-5 text-white text-normal font-light">{String(departmentDetails.description)}</h2>
               </div>
