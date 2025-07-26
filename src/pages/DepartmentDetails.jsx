@@ -40,7 +40,8 @@ export const DepartmentDetails = () => {
         // Fetch both department details and staff data
         const detailsResponse = await fetchDepartmentDetails(type, slug);
         const departmentId = detailsResponse.data[0].id;
-        const staffResponse = await fetchDepartmentStaff(departmentId);
+        const deptName = detailsResponse.data[0].name;
+        const staffResponse = await fetchDepartmentStaff(departmentId, deptName);
 
         // Ensure data is properly formatted
         const departmentData = detailsResponse.data[0];
