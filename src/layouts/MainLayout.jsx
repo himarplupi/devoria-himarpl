@@ -22,8 +22,8 @@ export default function MainLayout() {
   const footerLinks = [
     [
       { to: "https://blog-himarpl.vercel.app/", label: "Blogs" },
-      { to: "http://api-himarpl.vercel.app/api-docs", label: "API Documentation" },
-      { to: "/be", label: "About Us" },
+      { to: "https://api.himarpl.org/", label: "API Documentation" },
+      { to: "https://aspirasi-himarpl.vercel.app/", label: "Aspirasi" },
       { to: "/contact", label: "Contacts" },
     ],
   ];

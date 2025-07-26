@@ -25,8 +25,16 @@ export const fetchDepartmentDetails = async (type, acronym) => {
 
 export const fetchDepartmentStaff = async (departmentId) => {
   try {
-    const response = await axios.get(`${import.meta.env.VITE_API_URL}/users?departmentIds=${departmentId}&limit=50`);
-    return response.data;
+    const [ketuawaketuRes, staffRes] = await Promise.all([
+      axios.get(`${import.meta.env.VITE_API_URL}/users?departmentIds=${departmentId}&limit=50&positionNames=ketua%2Cwakil%20ketua&periodYears=2025`),
+      axios.get(`${import.meta.env.VITE_API_URL}/users?departmentIds=${departmentId}&limit=50&positionNames=staff&periodYears=2025`),
+    ]);
+
+    const ketuawaketu = ketuawaketuRes.data || [];
+    const staff = staffRes.data || [];
+
+    const combined = [...ketuawaketu, ...staff];
+    return combined;
   } catch (error) {
     console.error("Error fetching department staff:", error);
     throw error;

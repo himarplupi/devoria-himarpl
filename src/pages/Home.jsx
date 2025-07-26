@@ -417,7 +417,11 @@ function Sejarah() {
         <img src="/ornaments/Group 253.svg" alt="pixel" className="absolute lg:w-[128px] w-[88px] lg:-top-28 -top-11  right-0 scale-x-[-1]" />
 
         <div className="bg-[#FFE867] h-2 w-[1084px]"></div>
-        <div className="bg-[#F2F7FF] w-full lg:min-h-[400px] lg:h-fit md:py-[100px]  h-[400px]  flex items-center flex-col justify-center relative gap-8">
+        <Motion.div
+          layout="position"
+          transition={{ layout: { duration: 0.5, ease: "easeInOut" } }}
+          className="bg-[#F2F7FF] w-full lg:min-h-[400px] lg:h-fit md:py-[100px]  h-[400px]  flex items-center flex-col justify-center relative gap-8"
+        >
           <p className=" absolute lg:text-[300px] select-none text-[64px]" style={textStyle1}>
             KABINET
           </p>
@@ -457,11 +461,14 @@ function Sejarah() {
                   viewport={{ once: true, margin: "0px 0px -130px 0px", amount: threshold }}
                   transition={{ duration, delay }}
                   variants={animations}
-                  key={index}
                   className="flex flex-col  items-center justify-center lg:gap-[64px] md:gap-10 z-10 hover:cursor-pointer hover:scale-110 transform duration-300 ease-out"
                   onClick={() => {
-                    setActiveCabinet(true);
-                    setActiveStory(cabinet.id);
+                    if (activeCabinet && activeStory === cabinet.id) {
+                      setActiveCabinet(false);
+                    } else {
+                      setActiveCabinet(true);
+                      setActiveStory(cabinet.id);
+                    }
                   }}
                 >
                   <img src={cabinet.src} alt={cabinet.alt} className="max-h-[128px]  w-full" />
@@ -474,14 +481,14 @@ function Sejarah() {
               );
             })}
           </div>
-          {activeCabinet && (
-            <AnimatePresence>
+          <AnimatePresence mode="wait">
+            {activeCabinet && (
               <Motion.div
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -100, opacity: 0 }}
                 whileInView="visible"
-                viewport={{ once: true, margin: "0px 0px -130px 0px", amount: threshold }}
-                transition={{ duration, delay }}
+                transition={{ duration: 0.5, delay: 0.05 }}
                 // variants={animations2}
                 className="flex flex-col lg:rounded-3xl rounded-lg lg:w-[1220px] md:w-[600px] w-[343px] gap-4 lg:h-fit lg:pb-5 pb-4 lg:border-8 border-4 border-[#ff7f11]  bg-white z-10"
               >
@@ -506,9 +513,9 @@ function Sejarah() {
                   </div>
                 </div>
               </Motion.div>
-            </AnimatePresence>
-          )}
-        </div>
+            )}
+          </AnimatePresence>
+        </Motion.div>
 
         <div
           className="w-full h-2 "

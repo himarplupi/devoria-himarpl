@@ -182,7 +182,7 @@ export const DepartmentDetails = () => {
             Array.isArray(departmentStaffs) &&
             departmentStaffs.map((item, index) => (
               <div key={`staff-${index}-${item.nama || index}`} className="">
-                <CardKepengurusan img={String(item.image || "")} department={String(item.title || "").toUpperCase()} nama={String(item.nama || "").toUpperCase()} />
+                <CardKepengurusan img={String(item.image || "")} department={String(item.title || "").toUpperCase()} nama={String(item.nama || "").toUpperCase()} username={item.username} />
               </div>
             ))}
         </div>
