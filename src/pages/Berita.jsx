@@ -17,7 +17,7 @@ const PageNews = () => {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get("https://api-himarpl.vercel.app/api/v1/news")
+      .get(`${import.meta.env.VITE_API_URL}/news`)
       .then((response) => {
         setNews(response.data.data);
         // console.log(response.data.data);
