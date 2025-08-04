@@ -417,14 +417,15 @@ function Sejarah() {
         <img src="/ornaments/Group 253.svg" alt="pixel" className="absolute lg:w-[128px] w-[88px] lg:-top-28 -top-11  right-0 scale-x-[-1]" />
 
         <div className="bg-[#FFE867] h-2 w-[1084px]"></div>
-        <Motion.div className="bg-[#F2F7FF] w-full lg:min-h-[400px] lg:h-fit md:py-[100px]  h-[400px]  flex items-center flex-col justify-center relative gap-8">
+        <div className="bg-[#F2F7FF] w-full lg:min-h-[400px] h-fit py-[100px]   flex items-center flex-col justify-center relative gap-8">
           <p className=" absolute lg:text-[300px] select-none text-[64px]" style={textStyle1}>
             KABINET
           </p>
-          <Swiper
+
+          {/* <Swiper
             modules={[Autoplay]}
             spaceBetween={20}
-            className="md:!hidden w-auto flex items-center justify-center "
+            className="md:!hidden  flex items-center justify-center "
             centeredSlides={true}
             autoplay={{
               delay: 3500,
@@ -435,7 +436,7 @@ function Sejarah() {
             {cabinets.map((cabinet, index) => {
               return (
                 <SwiperSlide key={index} className="">
-                  <div className="flex flex-col items-center justify-center gap-[64px] z-10 hover:cursor-pointer hover:scale-105 transform duration-300 ease-out">
+                  <div className="flex flex-col items-center justify-center gap-[64px] z-10 hover:cursor-pointer w-full hover:scale-105 transform duration-300 ease-out">
                     <img src={cabinet.src} alt={cabinet.alt} className="h-[128px] w-auto" />
                     <div className="flex flex-col items-center justify-center gap-2">
                       <p className="font-semibold text-2xl">{cabinet.name}</p>
@@ -445,9 +446,9 @@ function Sejarah() {
                 </SwiperSlide>
               );
             })}
-          </Swiper>
+          </Swiper> */}
 
-          <div className=" xl:w-[1220px] lg:w-[1312px] md:flex md:w-[600px] hidden items-center justify-between   flex-wrap ">
+          <div className=" xl:w-[1220px] lg:w-[1312px] flex md:w-[600px] w-[343px] items-center md:justify-between justify-center   flex-wrap gap-4 ">
             {cabinets.map((cabinet, index) => {
               return (
                 // ntar animasiin elemennya aja
@@ -467,10 +468,10 @@ function Sejarah() {
                     }
                   }}
                 >
-                  <img src={cabinet.src} alt={cabinet.alt} className="max-h-[128px]  w-full" />
+                  <img src={cabinet.src} alt={cabinet.alt} className="md:h-[128px]  md:w-full h-[50px]" />
 
                   <div className="flex flex-col items-center justify-center gap-2">
-                    <p className="font-semibold text-2xl">{cabinet.name}</p>
+                    <p className="font-semibold text-2xl md:block hidden">{cabinet.name}</p>
                     <h1 className="text-[#4B4B4B] font-normal">{cabinet.year}</h1>
                   </div>
                 </Motion.div>
@@ -517,7 +518,7 @@ function Sejarah() {
               )}
             </AnimatePresence>
           </Motion.div>
-        </Motion.div>
+        </div>
 
         <div
           className="w-full h-2 "
