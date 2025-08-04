@@ -405,8 +405,8 @@ function Sejarah() {
     { kabinet: "Devoria", ketuaBe: "Fadli Mahesa", waKetuBe: "Nur Fitriani", ketuaDp: "Asep Nadhirin", waketuDp: "Achmad Soewardi" },
   ];
 
-  const [activeCabinet, setActiveCabinet] = useState(false);
-  const [activeStory, setActiveStory] = useState(0);
+  const [activeCabinet, setActiveCabinet] = useState(true);
+  const [activeStory, setActiveStory] = useState(5);
 
   return (
     <div id="journey" className="bg-[#10316B] w-full h-fit  items-center lg:gap-[135px] gap-[88px] flex flex-col justify-center lg:py-[68px] pt-[40px] pb-8">
@@ -417,11 +417,7 @@ function Sejarah() {
         <img src="/ornaments/Group 253.svg" alt="pixel" className="absolute lg:w-[128px] w-[88px] lg:-top-28 -top-11  right-0 scale-x-[-1]" />
 
         <div className="bg-[#FFE867] h-2 w-[1084px]"></div>
-        <Motion.div
-          layout="position"
-          transition={{ layout: { duration: 0.5, ease: "easeInOut" } }}
-          className="bg-[#F2F7FF] w-full lg:min-h-[400px] lg:h-fit md:py-[100px]  h-[400px]  flex items-center flex-col justify-center relative gap-8"
-        >
+        <Motion.div className="bg-[#F2F7FF] w-full lg:min-h-[400px] lg:h-fit md:py-[100px]  h-[400px]  flex items-center flex-col justify-center relative gap-8">
           <p className=" absolute lg:text-[300px] select-none text-[64px]" style={textStyle1}>
             KABINET
           </p>
@@ -481,40 +477,46 @@ function Sejarah() {
               );
             })}
           </div>
-          <AnimatePresence mode="wait">
-            {activeCabinet && (
-              <Motion.div
-                initial={{ y: -100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -100, opacity: 0 }}
-                whileInView="visible"
-                transition={{ duration: 0.5, delay: 0.05 }}
-                // variants={animations2}
-                className="flex flex-col lg:rounded-3xl rounded-lg lg:w-[1220px] md:w-[600px] w-[343px] gap-4 lg:h-fit lg:pb-5 pb-4 lg:border-8 border-4 border-[#ff7f11]  bg-white z-10"
-              >
-                <div className="flex flex-row items-center justify-between bg-[#ff7f11] lg:gap-96  rounded-t-[4px] max-w-full lg:px-6 lg:py-4 px-4 py-2">
-                  <h4 className="text-white lg:text-[40px] text-base">Pimpinan {stories[activeStory].kabinet}</h4>
+          <Motion.div
+            initial={false}
+            animate={{ height: activeCabinet ? "auto" : "fit-content" }}
+            className={`flex flex-col lg:rounded-3xl rounded-lg lg:w-[1220px] md:w-[600px] w-[343px] gap-4   lg:border-8 border-4 border-[#ff7f11]  bg-white z-10`}
+          >
+            <div className="flex flex-row items-center justify-between bg-[#ff7f11] lg:gap-96  rounded-t-[4px] max-w-full lg:px-6 lg:py-4 px-4 py-2">
+              <h4 className="text-white lg:text-[40px] text-base">Pimpinan {stories[activeStory].kabinet}</h4>
 
-                  <div className="flex flex-row items-center justify-between lg:gap-4 gap-[4.5px]">
-                    <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
-                    <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
-                    <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
-                  </div>
-                </div>
+              <div className="flex flex-row items-center justify-between lg:gap-4 gap-[4.5px]">
+                <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
+                <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
+                <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
+              </div>
+            </div>
 
-                <div className="flex flex-col items-start justify-start px-6 gap-4">
-                  <div>
-                    <p>Ketua Badan Eksekutif: {stories[activeStory].ketuaBe}</p>
-                    <p>Wakil Ketua Badan Eksekutif: {stories[activeStory].waKetuBe}</p>
+            <AnimatePresence>
+              {activeCabinet && (
+                <Motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden">
+                  <div className="flex flex-col items-start justify-start px-6 gap-4 lg:pb-5 pb-4">
+                    <div>
+                      <p>
+                        Ketua Badan Eksekutif: <b>{stories[activeStory].ketuaBe}</b>
+                      </p>
+                      <p>
+                        Wakil Ketua Badan Eksekutif: <b>{stories[activeStory].waKetuBe}</b>
+                      </p>
+                    </div>
+                    <div>
+                      <p>
+                        Ketua Dewan Perwakilan: <b>{stories[activeStory].ketuaDp}</b>
+                      </p>
+                      <p>
+                        Wakil Ketua Dewan Perwakilan: <b>{stories[activeStory].waketuDp}</b>
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p>Ketua Dewan Perwakilan: {stories[activeStory].ketuaDp}</p>
-                    <p>Wakil Ketua Dewan Perwakilan: {stories[activeStory].waketuDp}</p>
-                  </div>
-                </div>
-              </Motion.div>
-            )}
-          </AnimatePresence>
+                </Motion.div>
+              )}
+            </AnimatePresence>
+          </Motion.div>
         </Motion.div>
 
         <div
