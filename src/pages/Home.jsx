@@ -319,6 +319,8 @@ function Berita() {
 }
 
 function VisiMisi() {
+  const [open, setOpen] = useState(true);
+  const [open2, setOpen2] = useState(true);
   return (
     <div id="visiMisi" className="bg-[#10316B] w-full  lg:pt-[68px] pt-[42px] gap-[68px] flex flex-col justify-center items-center relative z-0">
       <img src="/ornaments/Group 251.svg" alt="pixel" className="lg:w-[181px] w-[64px] absolute lg:-top-7 top-0 right-0 -z-20" />
@@ -326,57 +328,76 @@ function VisiMisi() {
 
       <Motion.div
         initial="hidden"
+        animate={{ height: open ? "auto" : "fit-content" }}
         whileInView="visible"
         viewport={{ once: true, margin: "0px 0px -130px 0px", amount: threshold }}
         transition={{ duration, delay }}
         variants={animations}
-        className="flex flex-col lg:rounded-3xl pb-4 rounded-lg lg:w-[1220px] md:w-[600px] w-[343px] gap-4 lg:h-[300px]  lg:border-8 border-4 border-[#FF4B4B]"
+        className="flex flex-col lg:rounded-3xl  rounded-lg lg:w-[1220px] md:w-[600px] w-[343px] gap-4   lg:border-8 border-4 border-[#FF4B4B]"
       >
         <div className="flex flex-row items-center justify-between bg-[#FF4B4B] lg:gap-96  rounded-t-[4px] max-w-full lg:px-6 lg:py-4 px-4 py-2">
           <h4 className="text-white lg:text-[40px] text-base">Visi</h4>
 
           <div className="flex flex-row items-center justify-between lg:gap-4 gap-[4.5px]">
-            <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
+            <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full cursor-pointer" onClick={() => setOpen(!open)}>
+              <p className="text-center">X</p>
+            </div>
             <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
             <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
           </div>
         </div>
 
-        <p className="text-white lg:text-[24px]/[40px] lg:mx-6 mx-4 text-base/[24px]">
-          Menjadi himpunan mahasiswa yang aktif, inovatif, dan kolaboratif dalam mengembangkan potensi akademik, profesional, dan sosial mahasiswa Rekayasa Perangkat Lunak UPI, serta berkontribusi positif bagi masyarakat dan dunia industri.
-        </p>
+        <AnimatePresence>
+          {open && (
+            <Motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden pb-4">
+              <p className="text-white lg:text-[24px]/[40px] lg:mx-6 mx-4 text-base/[24px]">
+                Menjadi himpunan mahasiswa yang aktif, inovatif, dan kolaboratif dalam mengembangkan potensi akademik, profesional, dan sosial mahasiswa Rekayasa Perangkat Lunak UPI, serta berkontribusi positif bagi masyarakat dan dunia
+                industri.
+              </p>
+            </Motion.div>
+          )}
+        </AnimatePresence>
       </Motion.div>
       <Motion.div
         initial="hidden"
+        animate={{ height: open2 ? "auto" : "fit-content" }}
         whileInView="visible"
         viewport={{ once: true, margin: "0px 0px -130px 0px", amount: threshold }}
         transition={{ duration, delay }}
         variants={animations}
-        className="flex flex-col lg:rounded-3xl rounded-lg lg:w-[1220px] md:w-[600px] w-[343px] gap-4 lg:h-[460px] lg:pb-5 pb-4 lg:border-8 border-4 border-[#5573FF] lg:mb-[96px] mb-10 bg-[#10316B]"
+        className="flex flex-col lg:rounded-3xl rounded-lg lg:w-[1220px] md:w-[600px] w-[343px] gap-4   lg:border-8 border-4 border-[#5573FF] lg:mb-[96px] mb-10 bg-[#10316B]"
       >
         <div className="flex flex-row items-center justify-between bg-[#5573FF] lg:gap-96  rounded-t-[4px] max-w-full lg:px-6 lg:py-4 px-4 py-2">
           <h4 className="text-white lg:text-[40px] text-base">Misi</h4>
 
           <div className="flex flex-row items-center justify-between lg:gap-4 gap-[4.5px]">
-            <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
+            <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full cursor-pointer" onClick={() => setOpen2(!open2)}>
+              <p className="text-center">X</p>
+            </div>
             <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
             <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
           </div>
         </div>
 
-        <ul>
-          {[
-            "• Menyelenggarakan program kerja yang mendukung pengembangan kompetensi teknis dan soft skills mahasiswa.",
-            "• Membangun budaya organisasi yang profesional, adaptif, dan berintegritas.",
-            "• Menjadi wadah aspirasi dan advokasi bagi mahasiswa Rekayasa Perangkat Lunak.",
-            "• Meningkatkan kolaborasi dengan berbagai pihak, termasuk institusi pendidikan, industri, dan masyarakat.",
-            "• Melaksanakan kegiatan sosial dan pengabdian kepada masyarakat yang relevan dengan bidang keilmuan.",
-          ].map((i, idx) => (
-            <p key={idx} className="text-white lg:text-[24px]/[40px] text-base/[40px] mx-6">
-              {i}
-            </p>
-          ))}
-        </ul>
+        <AnimatePresence>
+          {open2 && (
+            <Motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden lg:pb-5 pb-4">
+              <ul>
+                {[
+                  "• Menyelenggarakan program kerja yang mendukung pengembangan kompetensi teknis dan soft skills mahasiswa.",
+                  "• Membangun budaya organisasi yang profesional, adaptif, dan berintegritas.",
+                  "• Menjadi wadah aspirasi dan advokasi bagi mahasiswa Rekayasa Perangkat Lunak.",
+                  "• Meningkatkan kolaborasi dengan berbagai pihak, termasuk institusi pendidikan, industri, dan masyarakat.",
+                  "• Melaksanakan kegiatan sosial dan pengabdian kepada masyarakat yang relevan dengan bidang keilmuan.",
+                ].map((i, idx) => (
+                  <p key={idx} className="text-white lg:text-[24px]/[40px] text-base/[40px] mx-6">
+                    {i}
+                  </p>
+                ))}
+              </ul>
+            </Motion.div>
+          )}
+        </AnimatePresence>
       </Motion.div>
     </div>
   );
@@ -422,42 +443,18 @@ function Sejarah() {
             KABINET
           </p>
 
-          {/* <Swiper
-            modules={[Autoplay]}
-            spaceBetween={20}
-            className="md:!hidden  flex items-center justify-center "
-            centeredSlides={true}
-            autoplay={{
-              delay: 3500,
-              disableOnInteraction: false,
-            }}
-            slidesPerView={"auto"}
+          <Motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "0px 0px -130px 0px", amount: threshold }}
+            transition={{ duration, delay }}
+            variants={animations}
+            className=" xl:w-[1220px] lg:w-[1312px] flex md:w-[600px] w-[343px] items-center md:justify-between justify-center   flex-wrap gap-4 "
           >
             {cabinets.map((cabinet, index) => {
               return (
-                <SwiperSlide key={index} className="">
-                  <div className="flex flex-col items-center justify-center gap-[64px] z-10 hover:cursor-pointer w-full hover:scale-105 transform duration-300 ease-out">
-                    <img src={cabinet.src} alt={cabinet.alt} className="h-[128px] w-auto" />
-                    <div className="flex flex-col items-center justify-center gap-2">
-                      <p className="font-semibold text-2xl">{cabinet.name}</p>
-                      <h1 className="text-[#4B4B4B] font-normal">{cabinet.year}</h1>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper> */}
-
-          <div className=" xl:w-[1220px] lg:w-[1312px] flex md:w-[600px] w-[343px] items-center md:justify-between justify-center   flex-wrap gap-4 ">
-            {cabinets.map((cabinet, index) => {
-              return (
                 // ntar animasiin elemennya aja
-                <Motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "0px 0px -130px 0px", amount: threshold }}
-                  transition={{ duration, delay }}
-                  variants={animations}
+                <div
                   className="flex flex-col  items-center justify-center lg:gap-[64px] md:gap-10 z-10 hover:cursor-pointer hover:scale-110 transform duration-300 ease-out"
                   onClick={() => {
                     if (activeCabinet && activeStory === cabinet.id) {
@@ -474,10 +471,10 @@ function Sejarah() {
                     <p className="font-semibold text-2xl md:block hidden">{cabinet.name}</p>
                     <h1 className="text-[#4B4B4B] font-normal">{cabinet.year}</h1>
                   </div>
-                </Motion.div>
+                </div>
               );
             })}
-          </div>
+          </Motion.div>
           <Motion.div
             initial={false}
             animate={{ height: activeCabinet ? "auto" : "fit-content" }}
