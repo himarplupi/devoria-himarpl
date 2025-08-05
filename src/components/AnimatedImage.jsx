@@ -1,4 +1,6 @@
 import { motion as Motion } from "motion/react";
+import { useAnimation } from "motion/react";
+import { useEffect, useRef } from "react";
 
 const AnimatedImage = ({
   src,
@@ -7,8 +9,11 @@ const AnimatedImage = ({
   animationType = "fadeIn", // fadeIn, slideUp, scale, slideLeft, slideRight
   duration = 0.6,
   delay = 0,
-  threshold = 0.1,
+  threshold = 0.2,
 }) => {
+  const controls = useAnimation();
+  const ref = useRef();
+
   const animations = {
     fadeIn: {
       hidden: { opacity: 0 },
@@ -32,8 +37,33 @@ const AnimatedImage = ({
     },
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            controls.start("visible");
+          }
+        });
+      },
+      {
+        threshold: threshold,
+        rootMargin: "0px 0px -100px 0px",
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [controls, threshold]);
   return (
-    <Motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px 0px -100px 0px", amount: threshold }} transition={{ duration, delay }} variants={animations[animationType]}>
+    <Motion.div ref={ref} initial="hidden" animate={controls} viewport={{ once: true }} transition={{ duration, delay }} variants={animations[animationType]}>
       <img src={src} alt={alt} className={className} loading="lazy" />
     </Motion.div>
   );

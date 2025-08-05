@@ -1,5 +1,7 @@
 import React from "react";
 import { motion as Motion } from "motion/react";
+import { useAnimation } from "motion/react";
+import { useEffect, useRef } from "react";
 
 const container = {
   hidden: { opacity: 0 },
@@ -18,9 +20,37 @@ const wordAnimation = {
 
 const AnimatedLongText = ({ text, className = "" }) => {
   const parts = text.split(/(<b>.*?<\/b>)/g);
+  const controls = useAnimation();
+  const ref = useRef();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            controls.start("show");
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -100px 0px",
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [controls]);
 
   return (
-    <Motion.p variants={container} initial="hidden" whileInView={"show"} viewport={{ once: true }} className={className}>
+    <Motion.p ref={ref} variants={container} initial="hidden" animate={controls} className={className}>
       {parts.map((part, index) => {
         if (part.startsWith("<b>")) {
           const content = part.replace(/<\/?b>/g, "");

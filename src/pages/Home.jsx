@@ -422,42 +422,18 @@ function Sejarah() {
             KABINET
           </p>
 
-          {/* <Swiper
-            modules={[Autoplay]}
-            spaceBetween={20}
-            className="md:!hidden  flex items-center justify-center "
-            centeredSlides={true}
-            autoplay={{
-              delay: 3500,
-              disableOnInteraction: false,
-            }}
-            slidesPerView={"auto"}
+          <Motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "0px 0px -130px 0px", amount: threshold }}
+            transition={{ duration, delay }}
+            variants={animations}
+            className=" xl:w-[1220px] lg:w-[1312px] flex md:w-[600px] w-[343px] items-center md:justify-between justify-center   flex-wrap gap-4 "
           >
             {cabinets.map((cabinet, index) => {
               return (
-                <SwiperSlide key={index} className="">
-                  <div className="flex flex-col items-center justify-center gap-[64px] z-10 hover:cursor-pointer w-full hover:scale-105 transform duration-300 ease-out">
-                    <img src={cabinet.src} alt={cabinet.alt} className="h-[128px] w-auto" />
-                    <div className="flex flex-col items-center justify-center gap-2">
-                      <p className="font-semibold text-2xl">{cabinet.name}</p>
-                      <h1 className="text-[#4B4B4B] font-normal">{cabinet.year}</h1>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper> */}
-
-          <div className=" xl:w-[1220px] lg:w-[1312px] flex md:w-[600px] w-[343px] items-center md:justify-between justify-center   flex-wrap gap-4 ">
-            {cabinets.map((cabinet, index) => {
-              return (
                 // ntar animasiin elemennya aja
-                <Motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "0px 0px -130px 0px", amount: threshold }}
-                  transition={{ duration, delay }}
-                  variants={animations}
+                <div
                   className="flex flex-col  items-center justify-center lg:gap-[64px] md:gap-10 z-10 hover:cursor-pointer hover:scale-110 transform duration-300 ease-out"
                   onClick={() => {
                     if (activeCabinet && activeStory === cabinet.id) {
@@ -474,10 +450,10 @@ function Sejarah() {
                     <p className="font-semibold text-2xl md:block hidden">{cabinet.name}</p>
                     <h1 className="text-[#4B4B4B] font-normal">{cabinet.year}</h1>
                   </div>
-                </Motion.div>
+                </div>
               );
             })}
-          </div>
+          </Motion.div>
           <Motion.div
             initial={false}
             animate={{ height: activeCabinet ? "auto" : "fit-content" }}

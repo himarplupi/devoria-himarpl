@@ -2,7 +2,7 @@ import { Outlet, NavLink, useLocation, Link } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Lenis from "lenis";
-import Transition from "@/components/Transition";
+import { AnimatePresence } from "motion/react";
 
 export default function MainLayout() {
   const links = [
@@ -161,7 +161,13 @@ export default function MainLayout() {
                 {links.map((link, i) => (
                   <div key={i} className="group transition-all relative">
                     <span className={`h-[2px] inline-block ${currentPath === link.path ? "bg-white w-full" : "bg-[#9C9C9C] w-0"} -bottom-0.5 absolute left-0  group-hover:w-full transition-[width] ease duration-300 `}>&nbsp;</span>
-                    <NavLink to={link.to} className={`${currentPath === link.path ? "text-white font-semibold" : "text-[#9C9C9C]"} `}>
+                    <NavLink
+                      to={link.to}
+                      className={`${currentPath === link.path ? "text-white font-semibold" : "text-[#9C9C9C]"} `}
+                      onClick={() => {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }}
+                    >
                       {link.name}
                     </NavLink>
                   </div>
@@ -223,7 +229,15 @@ export default function MainLayout() {
                 {links.map((link, i) => (
                   <div key={i} className="relative group transition-all">
                     <span className={`h-[2px] inline-block ${currentPath === link.path ? "bg-[#10316B] w-full" : "bg-[#9C9C9C] w-0"} -bottom-0.5 absolute left-0  group-hover:w-full transition-[width] ease duration-300 `}>&nbsp;</span>
-                    <NavLink to={link.to} className={`${currentPath === link.path ? "text-[#10316B] font-semibold" : "text-[#9C9C9C]"} `}>
+                    <NavLink
+                      to={link.to}
+                      className={`${currentPath === link.path ? "text-[#10316B] font-semibold" : "text-[#9C9C9C]"} `}
+                      onClick={() => {
+                        setTimeout(() => {
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }, 850);
+                      }}
+                    >
                       {link.name}
                     </NavLink>
                   </div>
@@ -257,6 +271,7 @@ export default function MainLayout() {
               </nav>
             </div>
           </div>
+
           <Outlet />
 
           <footer className="w-full bg-[#232323] lg:pb-5 pb-4 lg:pt-14 pt-5 lg:px-[72px] px-4 flex flex-col">
