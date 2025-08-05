@@ -451,7 +451,7 @@ function Sejarah() {
             variants={animations}
             className=" xl:w-[1220px] lg:w-[1312px] flex md:w-[600px] w-[343px] items-center md:justify-between justify-center   flex-wrap gap-4 "
           >
-            {cabinets.map((cabinet, index) => {
+            {cabinets.map((cabinet) => {
               return (
                 // ntar animasiin elemennya aja
                 <div
