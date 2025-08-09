@@ -19,6 +19,7 @@ import { AnimatePresence, motion as Motion } from "motion/react";
 import { HyperText } from "@/components/magicui/hyper-text";
 import SEO from "@/lib/seo";
 import Transition from "@/components/Transition";
+import ExpandableCard from "@/components/ExpandableCard";
 const duration = 0.6;
 const delay = 0;
 const threshold = 0.1;
@@ -319,86 +320,32 @@ function Berita() {
 }
 
 function VisiMisi() {
-  const [open, setOpen] = useState(true);
-  const [open2, setOpen2] = useState(true);
   return (
-    <div id="visiMisi" className="bg-[#10316B] w-full  lg:pt-[68px] pt-[42px] gap-[68px] flex flex-col justify-center items-center relative z-0">
+    <div id="visiMisi" className="bg-[#10316B] w-full  lg:py-[68px] py-[42px] gap-[68px] flex flex-col justify-center items-center relative z-0">
       <img src="/ornaments/Group 251.svg" alt="pixel" className="lg:w-[181px] w-[64px] absolute lg:-top-7 top-0 right-0 -z-20" />
       <img src="/ornaments/Group 250.svg" alt="pixel" className="lg:w-[207px] w-[80px] absolute bottom-0 left-0 -z-20" />
 
-      <Motion.div
-        initial="hidden"
-        animate={{ height: open ? "auto" : "fit-content" }}
-        whileInView="visible"
-        viewport={{ once: true, margin: "0px 0px -130px 0px", amount: threshold }}
-        transition={{ duration, delay }}
-        variants={animations}
-        className="flex flex-col lg:rounded-3xl  rounded-lg lg:w-[1220px] md:w-[600px] w-[343px] gap-4   lg:border-8 border-4 border-[#FF4B4B]"
-      >
-        <div className="flex flex-row items-center justify-between bg-[#FF4B4B] lg:gap-96  rounded-t-[4px] max-w-full lg:px-6 lg:py-4 px-4 py-2">
-          <h4 className="text-white lg:text-[40px] text-base">Visi</h4>
+      <ExpandableCard Title="Visi" bgColor="FF4B4B">
+        <p className="text-white lg:text-[24px]/[40px] lg:mx-6 mx-4 text-base/[24px]">
+          Menjadi himpunan mahasiswa yang aktif, inovatif, dan kolaboratif dalam mengembangkan potensi akademik, profesional, dan sosial mahasiswa Rekayasa Perangkat Lunak UPI, serta berkontribusi positif bagi masyarakat dan dunia industri.
+        </p>
+      </ExpandableCard>
 
-          <div className="flex flex-row items-center justify-between lg:gap-4 gap-[4.5px]">
-            <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full cursor-pointer" onClick={() => setOpen(!open)}>
-              <p className="text-center">X</p>
-            </div>
-            <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
-            <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
-          </div>
-        </div>
-
-        <AnimatePresence>
-          {open && (
-            <Motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden pb-4">
-              <p className="text-white lg:text-[24px]/[40px] lg:mx-6 mx-4 text-base/[24px]">
-                Menjadi himpunan mahasiswa yang aktif, inovatif, dan kolaboratif dalam mengembangkan potensi akademik, profesional, dan sosial mahasiswa Rekayasa Perangkat Lunak UPI, serta berkontribusi positif bagi masyarakat dan dunia
-                industri.
-              </p>
-            </Motion.div>
-          )}
-        </AnimatePresence>
-      </Motion.div>
-      <Motion.div
-        initial="hidden"
-        animate={{ height: open2 ? "auto" : "fit-content" }}
-        whileInView="visible"
-        viewport={{ once: true, margin: "0px 0px -130px 0px", amount: threshold }}
-        transition={{ duration, delay }}
-        variants={animations}
-        className="flex flex-col lg:rounded-3xl rounded-lg lg:w-[1220px] md:w-[600px] w-[343px] gap-4   lg:border-8 border-4 border-[#5573FF] lg:mb-[96px] mb-10 bg-[#10316B]"
-      >
-        <div className="flex flex-row items-center justify-between bg-[#5573FF] lg:gap-96  rounded-t-[4px] max-w-full lg:px-6 lg:py-4 px-4 py-2">
-          <h4 className="text-white lg:text-[40px] text-base">Misi</h4>
-
-          <div className="flex flex-row items-center justify-between lg:gap-4 gap-[4.5px]">
-            <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full cursor-pointer" onClick={() => setOpen2(!open2)}>
-              <p className="text-center">X</p>
-            </div>
-            <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
-            <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
-          </div>
-        </div>
-
-        <AnimatePresence>
-          {open2 && (
-            <Motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden lg:pb-5 pb-4">
-              <ul>
-                {[
-                  "• Menyelenggarakan program kerja yang mendukung pengembangan kompetensi teknis dan soft skills mahasiswa.",
-                  "• Membangun budaya organisasi yang profesional, adaptif, dan berintegritas.",
-                  "• Menjadi wadah aspirasi dan advokasi bagi mahasiswa Rekayasa Perangkat Lunak.",
-                  "• Meningkatkan kolaborasi dengan berbagai pihak, termasuk institusi pendidikan, industri, dan masyarakat.",
-                  "• Melaksanakan kegiatan sosial dan pengabdian kepada masyarakat yang relevan dengan bidang keilmuan.",
-                ].map((i, idx) => (
-                  <p key={idx} className="text-white lg:text-[24px]/[40px] text-base/[40px] mx-6">
-                    {i}
-                  </p>
-                ))}
-              </ul>
-            </Motion.div>
-          )}
-        </AnimatePresence>
-      </Motion.div>
+      <ExpandableCard Title="Misi" bgColor="5573FF">
+        <ul>
+          {[
+            "• Menyelenggarakan program kerja yang mendukung pengembangan kompetensi teknis dan soft skills mahasiswa.",
+            "• Membangun budaya organisasi yang profesional, adaptif, dan berintegritas.",
+            "• Menjadi wadah aspirasi dan advokasi bagi mahasiswa Rekayasa Perangkat Lunak.",
+            "• Meningkatkan kolaborasi dengan berbagai pihak, termasuk institusi pendidikan, industri, dan masyarakat.",
+            "• Melaksanakan kegiatan sosial dan pengabdian kepada masyarakat yang relevan dengan bidang keilmuan.",
+          ].map((i, idx) => (
+            <p key={idx} className="text-white lg:text-[24px]/[40px] text-base/[40px] mx-6">
+              {i}
+            </p>
+          ))}
+        </ul>
+      </ExpandableCard>
     </div>
   );
 }
@@ -428,7 +375,6 @@ function Sejarah() {
 
   const [activeCabinet, setActiveCabinet] = useState(true);
   const [activeStory, setActiveStory] = useState(5);
-
   return (
     <div id="journey" className="bg-[#10316B] w-full h-fit  items-center lg:gap-[135px] gap-[88px] flex flex-col justify-center lg:py-[68px] pt-[40px] pb-8">
       <AnimatedLongText2 className="text-white lg:text-8xl text-[64px]/[72px] text-center" text="Perjalanan HIMARPL" />
@@ -475,46 +421,27 @@ function Sejarah() {
               );
             })}
           </Motion.div>
-          <Motion.div
-            initial={false}
-            animate={{ height: activeCabinet ? "auto" : "fit-content" }}
-            className={`flex flex-col lg:rounded-3xl rounded-lg lg:w-[1220px] md:w-[600px] w-[343px] gap-4   lg:border-8 border-4 border-[#ff7f11]  bg-white z-10`}
-          >
-            <div className="flex flex-row items-center justify-between bg-[#ff7f11] lg:gap-96  rounded-t-[4px] max-w-full lg:px-6 lg:py-4 px-4 py-2">
-              <h4 className="text-white lg:text-[40px] text-base">Pimpinan {stories[activeStory].kabinet}</h4>
 
-              <div className="flex flex-row items-center justify-between lg:gap-4 gap-[4.5px]">
-                <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
-                <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
-                <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
+          <ExpandableCard Title={"Pimpinan " + stories[activeStory].kabinet} bgColor="0B409C" initiallyOpen={activeCabinet}>
+            <div className="flex flex-col items-start justify-start px-6 gap-4 lg:pb-5 pb-4">
+              <div>
+                <p>
+                  Ketua Badan Eksekutif: <b>{stories[activeStory].ketuaBe}</b>
+                </p>
+                <p>
+                  Wakil Ketua Badan Eksekutif: <b>{stories[activeStory].waKetuBe}</b>
+                </p>
+              </div>
+              <div>
+                <p>
+                  Ketua Dewan Perwakilan: <b>{stories[activeStory].ketuaDp}</b>
+                </p>
+                <p>
+                  Wakil Ketua Dewan Perwakilan: <b>{stories[activeStory].waketuDp}</b>
+                </p>
               </div>
             </div>
-
-            <AnimatePresence>
-              {activeCabinet && (
-                <Motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden">
-                  <div className="flex flex-col items-start justify-start px-6 gap-4 lg:pb-5 pb-4">
-                    <div>
-                      <p>
-                        Ketua Badan Eksekutif: <b>{stories[activeStory].ketuaBe}</b>
-                      </p>
-                      <p>
-                        Wakil Ketua Badan Eksekutif: <b>{stories[activeStory].waKetuBe}</b>
-                      </p>
-                    </div>
-                    <div>
-                      <p>
-                        Ketua Dewan Perwakilan: <b>{stories[activeStory].ketuaDp}</b>
-                      </p>
-                      <p>
-                        Wakil Ketua Dewan Perwakilan: <b>{stories[activeStory].waketuDp}</b>
-                      </p>
-                    </div>
-                  </div>
-                </Motion.div>
-              )}
-            </AnimatePresence>
-          </Motion.div>
+          </ExpandableCard>
         </div>
 
         <div

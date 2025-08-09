@@ -8,14 +8,7 @@ import { useCallback, useRef } from "react";
 import AnimatedText from "../components/AnimatedText";
 import { fetchDepartmentDetails, fetchDepartmentStaff } from "../services/apiService";
 import { AnimatePresence, motion as Motion } from "motion/react";
-
-const duration = 0.6;
-const delay = 0;
-const threshold = 0.1;
-const animations = {
-  hidden: { opacity: 0, x: -50 },
-  visible: { opacity: 1, x: 0 },
-};
+import ExpandableCard from "@/components/ExpandableCard";
 
 export const DepartmentDetails = () => {
   const { slug } = useParams(); // Get department name from URL
@@ -27,7 +20,6 @@ export const DepartmentDetails = () => {
   const [departmentDetails, setDepartmentDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [open, setOpen] = useState(true);
 
   // Determine type from current path
   const currentPath = window.location.pathname;
@@ -140,44 +132,19 @@ export const DepartmentDetails = () => {
               </div>
             </div>
 
-            <Motion.div
-              initial="hidden"
-              animate={{ height: open ? "auto" : "fit-content" }}
-              whileInView="visible"
-              viewport={{ once: true, margin: "0px 0px -130px 0px", amount: threshold }}
-              transition={{ duration, delay }}
-              variants={animations}
-              className="flex flex-col rounded-3xl w-full max-w-[1220px] gap-4 h-fit border-8 bg-[#ffffff] border-[#000000]"
-            >
-              <div className="flex flex-row items-center justify-between bg-[#000000] rounded-t-[4px] max-w-full lg:px-6 lg:py-4 px-4 py-2">
-                <h4 className="text-white lg:text-[40px] text-base">Program Kerja</h4>
-                <div className="flex flex-row items-center justify-between lg:gap-4 gap-[4.5px]">
-                  <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full cursor-pointer" onClick={() => setOpen(!open)}>
-                    <p className="text-center">X</p>
-                  </div>
-                  <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
-                  <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
-                </div>
-              </div>
-
-              <AnimatePresence>
-                {open && (
-                  <Motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden">
-                    <div className="lg:mx-6 mx-4 pb-4">
-                      {departmentDetails.programs && Array.isArray(departmentDetails.programs) && departmentDetails.programs.length > 0 ? (
-                        departmentDetails.programs.map((program, index) => (
-                          <p key={`program-${index}`} className="text-black lg:text-[24px]/[40px] text-base/[24px] mb-4">
-                            {String(program)}
-                          </p>
-                        ))
-                      ) : (
-                        <p className="text-black lg:text-[24px]/[40px] text-base/[24px]">No programs available.</p>
-                      )}
-                    </div>
-                  </Motion.div>
+            <ExpandableCard Title="Program Kerja" bgColor="000000">
+              <div className="lg:mx-6 mx-4 pb-4">
+                {departmentDetails.programs && Array.isArray(departmentDetails.programs) && departmentDetails.programs.length > 0 ? (
+                  departmentDetails.programs.map((program, index) => (
+                    <p key={`program-${index}`} className="text-black lg:text-[24px]/[40px] text-base/[24px] mb-4">
+                      {String(program)}
+                    </p>
+                  ))
+                ) : (
+                  <p className="text-black lg:text-[24px]/[40px] text-base/[24px]">No programs available.</p>
                 )}
-              </AnimatePresence>
-            </Motion.div>
+              </div>
+            </ExpandableCard>
           </>
         )}
       </div>
