@@ -25,13 +25,13 @@ const ExpandableCard = ({ Title, children, bgColor, initiallyOpen = true }) => {
       style={{ borderColor: `#${bgColor}` }}
       className={`flex flex-col lg:rounded-3xl  rounded-lg lg:w-[1220px] md:w-[600px] w-[343px] gap-4  z-10 lg:border-8 border-4 `}
     >
-      <div className={`flex flex-row items-center justify-between bg-[#${bgColor}] lg:gap-96  rounded-t-[4px] max-w-full lg:px-6 lg:py-4 px-4 py-2`}>
+      <div style={{ backgroundColor: `#${bgColor}` }} className={`flex flex-row items-center justify-between bg-[#${bgColor}] lg:gap-96  rounded-t-[4px] max-w-full lg:px-6 lg:py-4 px-4 py-2`}>
         <h4 className="text-white lg:text-[40px] text-base">{Title}</h4>
 
         <div className="flex flex-row items-center justify-between lg:gap-4 gap-[4.5px]">
           <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-[#4b4b4b] rounded-full cursor-pointer" onClick={() => setOpen(!open)}></div>
-          <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-[#23c22e] rounded-full" onClick={() => console.log(open)}></div>
-          <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-[#FF7F11] rounded-full"></div>
+          <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full" onClick={() => console.log(open)}></div>
+          <div className="lg:w-6 lg:h-6 w-[6.75px] h-[6.75px] bg-white rounded-full"></div>
         </div>
       </div>
 
