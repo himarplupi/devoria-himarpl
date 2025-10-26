@@ -1,23 +1,25 @@
-import { Outlet, NavLink, useLocation, Link } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
+import { Outlet, NavLink, Link } from "react-router-dom";
+// import { useState, useRef, useEffect } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Lenis from "lenis";
 import { AnimatePresence } from "motion/react";
+import Header from "@/components/Header";
+import { ReactLenis } from "@/components/ReactLenis";
 
 export default function MainLayout() {
-  const links = [
-    { to: "/", path: "", name: "Beranda" },
-    // { to: "/dedication", path: "dedication", name: "Dedikasi" },
-    { to: "/berita", path: "berita", name: "Berita" },
-    { to: "/struktur", path: "struktur", name: "Struktur Organisasi" },
-    { to: "/contact", path: "contact", name: "Contacts" },
-  ];
+  // const links = [
+  //   { to: "/", path: "", name: "Beranda" },
+  //   // { to: "/dedication", path: "dedication", name: "Dedikasi" },
+  //   { to: "/berita", path: "berita", name: "Berita" },
+  //   { to: "/struktur", path: "struktur", name: "Struktur Organisasi" },
+  //   { to: "/contact", path: "contact", name: "Contacts" },
+  // ];
 
-  const aboutLinks = [
-    { to: "/be", path: "be", name: "BE" },
-    { to: "/dp", path: "dp", name: "DP" },
-    { to: "/logo", path: "logo", name: "Logo" },
-  ];
+  // const aboutLinks = [
+  //   { to: "/be", path: "be", name: "BE" },
+  //   { to: "/dp", path: "dp", name: "DP" },
+  //   { to: "/logo", path: "logo", name: "Logo" },
+  // ];
 
   const footerLinks = [
     [
@@ -35,111 +37,113 @@ export default function MainLayout() {
     { to: "https://www.youtube.com/@himarpl", icon: "mdi:youtube" },
   ];
 
-  const location = useLocation(),
-    currentPath = location.pathname.split("/")[1];
+  // const location = useLocation(),
+  //   currentPath = location.pathname.split("/")[1];
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [isOpen2, setIsOpen2] = useState(false);
-  const [openSidebar, setOpenSidebar] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen2, setIsOpen2] = useState(false);
+  // const [openSidebar, setOpenSidebar] = useState(false);
 
-  const dropdownRef = useRef(null);
-  const sideBarRef = useRef(null);
+  // const dropdownRef = useRef(null);
+  // const sideBarRef = useRef(null);
 
-  useEffect(() => {
-    setOpenSidebar(false);
-  }, [location]);
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
+  // useEffect(() => {
+  //   setOpenSidebar(false);
+  // }, [location]);
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+  //       setIsOpen(false);
+  //     }
+  //   };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-  const isActive = (path) => currentPath === path;
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, []);
+  // const isActive = (path) => currentPath === path;
 
-  const [showNavbar, setShowNavbar] = useState(true);
-  const lastScroll = useRef(0);
+  // const [showNavbar, setShowNavbar] = useState(true);
+  // const lastScroll = useRef(0);
 
-  useEffect(() => {
-    let lenis;
-    let rafId;
+  // useEffect(() => {
+  //   let lenis;
+  //   let rafId;
 
-    const initLenis = () => {
-      // Pastikan cleanup sebelum init baru
-      if (lenis) {
-        lenis.destroy();
-        cancelAnimationFrame(rafId);
-      }
+  //   const initLenis = () => {
+  //     // Pastikan cleanup sebelum init baru
+  //     if (lenis) {
+  //       lenis.destroy();
+  //       cancelAnimationFrame(rafId);
+  //     }
 
-      // Hanya aktifkan untuk desktop
-      if (window.innerWidth > 768) {
-        lenis = new Lenis({ lerp: 0.1, smooth: true });
+  //     // Hanya aktifkan untuk desktop
+  //     if (window.innerWidth > 768) {
+  //       lenis = new Lenis({ lerp: 0.1, smooth: true });
 
-        const raf = (time) => {
-          lenis.raf(time);
-          rafId = requestAnimationFrame(raf);
-        };
-        rafId = requestAnimationFrame(raf);
-      } else {
-        // Force enable natural scrolling for mobile
-        document.body.style.overflow = "auto";
-        document.documentElement.style.overflow = "auto";
-      }
-    };
+  //       const raf = (time) => {
+  //         lenis.raf(time);
+  //         rafId = requestAnimationFrame(raf);
+  //       };
+  //       rafId = requestAnimationFrame(raf);
+  //     } else {
+  //       // Force enable natural scrolling for mobile
+  //       document.body.style.overflow = "auto";
+  //       document.documentElement.style.overflow = "auto";
+  //     }
+  //   };
 
-    initLenis();
-    window.addEventListener("resize", initLenis);
+  //   initLenis();
+  //   window.addEventListener("resize", initLenis);
 
-    return () => {
-      window.removeEventListener("resize", initLenis);
-      if (lenis) lenis.destroy();
-      cancelAnimationFrame(rafId);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("resize", initLenis);
+  //     if (lenis) lenis.destroy();
+  //     cancelAnimationFrame(rafId);
+  //   };
+  // }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScroll = window.scrollY;
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const currentScroll = window.scrollY;
 
-      if (currentScroll > lastScroll.current && currentScroll > 50) {
-        setShowNavbar(false);
-      } else {
-        setShowNavbar(true);
-      }
+  //     if (currentScroll > lastScroll.current && currentScroll > 50) {
+  //       setShowNavbar(false);
+  //     } else {
+  //       setShowNavbar(true);
+  //     }
 
-      lastScroll.current = currentScroll;
-    };
+  //     lastScroll.current = currentScroll;
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (sideBarRef.current && !sideBarRef.current.contains(e.target)) {
-        setOpenSidebar(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  // useEffect(() => {
+  //   const handleClickOutside = (e) => {
+  //     if (sideBarRef.current && !sideBarRef.current.contains(e.target)) {
+  //       setOpenSidebar(false);
+  //     }
+  //   };
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => document.removeEventListener("mousedown", handleClickOutside);
+  // }, []);
 
   return (
     <>
-      <div
+      <Header />
+      <ReactLenis>
+        {/* <div
         id="scrollableDiv"
         className="min-h-screen relative"
         style={{
           overflowX: "hidden",
         }}
-      >
+      > */}
         {/* mobile sidebar */}
-        <div className={`md:hidden fixed top-0 left-0 w-full h-full z-[90] transition-all duration-600 ${openSidebar ? "translate-x-0 " : "-translate-x-full"}`} onClick={() => setOpenSidebar(false)}>
+        {/* <div className={`md:hidden fixed top-0 left-0 w-full h-full z-[90] transition-all duration-600 ${openSidebar ? "translate-x-0 " : "-translate-x-full"}`} onClick={() => setOpenSidebar(false)}>
           <div
             ref={sideBarRef}
             className={`fixed top-0 left-0 h-full w-[65%] bg-[#222222] pt-10 flex flex-col items-center transform transition-all duration-300 ${openSidebar ? "translate-x-0" : "-translate-x-full"}`}
@@ -204,10 +208,10 @@ export default function MainLayout() {
               </nav>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className={`flex flex-col justify-center items-center lg:mt-[50px] mt-10`}>
-          <div className={`fixed top-8 z-50 transition-transform duration-500 w-full flex justify-center px-6 md:px-10 ${showNavbar ? "translate-y-0" : "-translate-y-[115px] "}`}>
+          {/* <div className={`fixed top-8 z-50 transition-transform duration-500 w-full flex justify-center px-6 md:px-10 ${showNavbar ? "translate-y-0" : "-translate-y-[115px] "}`}>
             <div
               className={`  bg-white flex flex-row gap-32 justify-between items-center max-w-[1220px] w-full border border-[#A7A7A7] rounded-2xl lg:gap-auto  drop-shadow(0px_4px_12px_rgba(0,0,0,0.04)) lg:flex-row lg:px-0 px-4 min-w-[343px] h-[70px]`}
             >
@@ -270,7 +274,7 @@ export default function MainLayout() {
                 </div>
               </nav>
             </div>
-          </div>
+          </div> */}
 
           <Outlet />
 
@@ -375,7 +379,8 @@ export default function MainLayout() {
             </div>
           </footer>
         </div>
-      </div>
+      </ReactLenis>
+      {/* </div> */}
     </>
   );
 }
