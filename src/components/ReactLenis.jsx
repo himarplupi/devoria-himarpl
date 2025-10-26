@@ -1,4 +1,4 @@
-import { ReactLenis as RL } from "lenis/react";
+import { ReactLenis as RL } from "lenis/dist/lenis-react";
 
 export function ReactLenis({ children }) {
   return (
