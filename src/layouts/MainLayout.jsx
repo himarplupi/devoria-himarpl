@@ -7,7 +7,7 @@ import { AnimatePresence } from "motion/react";
 export default function MainLayout() {
   const links = [
     { to: "/", path: "", name: "Beranda" },
-    { to: "/dedication", path: "dedication", name: "Dedikasi" },
+    // { to: "/dedication", path: "dedication", name: "Dedikasi" },
     { to: "/berita", path: "berita", name: "Berita" },
     { to: "/struktur", path: "struktur", name: "Struktur Organisasi" },
     { to: "/contact", path: "contact", name: "Contacts" },

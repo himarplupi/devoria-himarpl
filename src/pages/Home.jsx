@@ -88,7 +88,7 @@ export default function Home() {
       </div>
 
       <Sponsor />
-      <Dedication />
+      {/* <Dedication /> */}
 
       {/* <Marquee className="bg-black w-full py-4 ">
         {[0, 1, 2, 3].map((i) => (
