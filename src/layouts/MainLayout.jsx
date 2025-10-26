@@ -1,5 +1,5 @@
-import { Outlet, NavLink, useLocation, Link } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
+import { Outlet, NavLink, Link } from "react-router-dom";
+// import { useState, useRef, useEffect } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Lenis from "lenis";
 import { AnimatePresence } from "motion/react";
@@ -7,19 +7,19 @@ import Header from "@/components/Header";
 import { ReactLenis } from "@/components/ReactLenis";
 
 export default function MainLayout() {
-  const links = [
-    { to: "/", path: "", name: "Beranda" },
-    // { to: "/dedication", path: "dedication", name: "Dedikasi" },
-    { to: "/berita", path: "berita", name: "Berita" },
-    { to: "/struktur", path: "struktur", name: "Struktur Organisasi" },
-    { to: "/contact", path: "contact", name: "Contacts" },
-  ];
+  // const links = [
+  //   { to: "/", path: "", name: "Beranda" },
+  //   // { to: "/dedication", path: "dedication", name: "Dedikasi" },
+  //   { to: "/berita", path: "berita", name: "Berita" },
+  //   { to: "/struktur", path: "struktur", name: "Struktur Organisasi" },
+  //   { to: "/contact", path: "contact", name: "Contacts" },
+  // ];
 
-  const aboutLinks = [
-    { to: "/be", path: "be", name: "BE" },
-    { to: "/dp", path: "dp", name: "DP" },
-    { to: "/logo", path: "logo", name: "Logo" },
-  ];
+  // const aboutLinks = [
+  //   { to: "/be", path: "be", name: "BE" },
+  //   { to: "/dp", path: "dp", name: "DP" },
+  //   { to: "/logo", path: "logo", name: "Logo" },
+  // ];
 
   const footerLinks = [
     [
@@ -37,35 +37,35 @@ export default function MainLayout() {
     { to: "https://www.youtube.com/@himarpl", icon: "mdi:youtube" },
   ];
 
-  const location = useLocation(),
-    currentPath = location.pathname.split("/")[1];
+  // const location = useLocation(),
+  //   currentPath = location.pathname.split("/")[1];
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [isOpen2, setIsOpen2] = useState(false);
-  const [openSidebar, setOpenSidebar] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen2, setIsOpen2] = useState(false);
+  // const [openSidebar, setOpenSidebar] = useState(false);
 
-  const dropdownRef = useRef(null);
-  const sideBarRef = useRef(null);
+  // const dropdownRef = useRef(null);
+  // const sideBarRef = useRef(null);
 
-  useEffect(() => {
-    setOpenSidebar(false);
-  }, [location]);
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
+  // useEffect(() => {
+  //   setOpenSidebar(false);
+  // }, [location]);
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+  //       setIsOpen(false);
+  //     }
+  //   };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-  const isActive = (path) => currentPath === path;
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, []);
+  // const isActive = (path) => currentPath === path;
 
-  const [showNavbar, setShowNavbar] = useState(true);
-  const lastScroll = useRef(0);
+  // const [showNavbar, setShowNavbar] = useState(true);
+  // const lastScroll = useRef(0);
 
   // useEffect(() => {
   //   let lenis;
