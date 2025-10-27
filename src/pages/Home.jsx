@@ -50,7 +50,7 @@ export default function Home() {
     <>
       <SEO />
       <Transition />
-      <div id="home" className="pt-[80px] bg-white ">
+      <div id="home" className="pt-[100px] bg-white flex flex-col items-center ">
         <div className="relative">
           <div className="flex md:flex-row flex-col lg:gap-32 gap-4 md:items-center justify-between items-start  lg:w-[1220px] lg:mx-[110px] mx-4">
             <div className="lg:max-w-[555px] flex flex-col gap-2">
