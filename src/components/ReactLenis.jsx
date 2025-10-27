@@ -8,7 +8,7 @@ export function ReactLenis({ children }) {
           return node.classList.contains("lenis-prevent");
         },
       }}
-      className="max-h-screen overflow-y-auto flex flex-col justify-center items-center lg:pt-[50px] pt-10"
+      className="h-screen overflow-hidden flex flex-col justify-center items-center lg:pt-[50px] pt-10"
       root
     >
       {children}
