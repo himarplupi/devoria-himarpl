@@ -13,7 +13,7 @@ export const Contacts = () => {
       <div
         id="contact"
         className={`bg-[url(/ornaments/rectangle498.png)] w-full  pt-10 px-4 bg-cover bg-center flex md:flex-row flex-col-reverse lg:items-start items-center lg:gap-4 gap-6 justify-center  pb-[64px] ${
-          location.pathname === "/contact" ? "-mt-[135px] pt-44 min-h-screen" : "mt-0"
+          location.pathname === "/contact" ? "-mt-[125px] pt-44 min-h-screen" : "mt-0"
         }`}
       >
         <div className="cursor-pointer md:hidden flex items-center justify-center px-6 py-4 rounded-2xl transition-transform duration-200 hover:scale-105 active:scale-95 hover:shadow-lg bg-black w-[343px]">

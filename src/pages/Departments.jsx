@@ -23,9 +23,7 @@ export const Departments = () => {
         setError(null);
 
         // Use the configured API instance from apiService
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/departments?limit=50&type=${type}&year=2025`
-        );
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/departments?limit=50&type=${type}&year=2025`);
 
         const data = response.data;
         setKepengurusanData(data.data || []);
@@ -88,7 +86,7 @@ export const Departments = () => {
   return (
     <>
       <Transition />
-      <div id="departments" className="bg-[url(/bg/Bg-Low.png)] pt-[68px] flex flex-col items-center pb-[150px] w-full ">
+      <div id="departments" className="bg-[url(/bg/Bg-Low.png)] pt-[108px] flex flex-col items-center pb-[150px] w-full ">
         <div className="flex flex-col items-center lg:w-[1210px] w-[343px] lg:gap-8 gap-6">
           <AnimatedLongText className="lg:text-7xl text-[32px] text-center text-[#4B4B4B] font-semibold" text={"STRUKTUR KEPENGURUSAN"} />
           <div className="bg-black">
