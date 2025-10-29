@@ -16,8 +16,8 @@ const PageNews = () => {
   useEffect(() => {
     // setIsLoading(true);
     axios
-      .get(`${import.meta.env.VITE_API_URL}/news?page=1&limit=100&order=desc`)
-      // .get("https://api.himarpl.org/api/v1/news?page=1&limit=100&order=desc")
+      // .get(`${import.meta.env.VITE_API_URL}/news?page=1&limit=100&order=desc`)
+      .get("https://api.himarpl.org/api/v1/news?page=1&limit=100&order=desc")
       .then((response) => {
         const allNews = response.data.data || [];
         setNews(allNews);
@@ -56,7 +56,7 @@ const PageNews = () => {
           </div>
         </div>
       ) : (
-        <div className={`bg-white flex flex-col items-center pb-[50px] min-h-screen ${location.pathname === "/berita" ? "pt-20 lg:pt-[88px]" : "pt-10 lg:pt-[68px]"}`}>
+        <div className={`bg-white flex flex-col items-center pb-[50px] pt-40 lg:pt-[120px] min-h-screen `}>
           <CarouselNewsLatest data={latestNews} />
 
           <AnimatedLongText text="Semua Berita" className="text-2xl font-bold mt-10 mb-4" />
