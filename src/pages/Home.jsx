@@ -100,8 +100,8 @@ export default function Home() {
 
       <Berita />
 
-      <div className="bg-[#ffe867] w-full flex justify-center md:flex-row flex-col items-center lg:px-[58px] py-[45px] xl:gap-3 lg:gap-[42px] gap-[28px] z-10 ">
-        <Marquee className="md:!hidden w-full flex flex-row justify-between  items-center !overflow-visible">
+      <div className="bg-[#ffe867] max-w-screen w-full flex justify-center flex-row  items-center lg:px-[58px] py-[45px] xl:gap-3 lg:gap-[42px]  z-10 ">
+        {/* <Marquee className="md:!hidden w-full flex flex-row justify-between  items-center !overflow-visible">
           {[0, 1, 2, 3].map((i) => (
             <div className="relative " key={i}>
               <div className="bg-[#ffe867]  lg:h-[110px] py-1 px-[10px] lg:w-auto w-[100px] flex items-center z-10">
@@ -122,11 +122,11 @@ export default function Home() {
               </p>
             </div>
           ))}
-        </Marquee>
+        </Marquee> */}
 
-        <div className="relative md:block hidden">
+        <div className="relative md:block ">
           <div className="bg-[#ffe867]  lg:h-[110px] py-1 px-[10px] lg:w-auto w-[100px] flex items-center z-10">
-            <p className="text-[#886D00] lg:text-[128px]/[180px] text-[40px]/[28px] font-bold">VISI</p>
+            <p className="text-[#886D00] lg:text-[128px]/[180px] text-[40px]/[28px] font-bold ">VISI</p>
           </div>
           <div className="bg-[#ffe867] absolute z-10 w-2 lg:block hidden h-5 top-10 -left-1"></div>
           <p style={textStyle2} className="lg:text-[128px]/[180px] text-[40px] absolute lg:-top-[69px] -top-[28px] left-2.5 -z-10">
@@ -145,7 +145,7 @@ export default function Home() {
 
         <img src="/himarpl/Group 247.svg" alt="HIMARPL" className="xl:w-[618px] lg:w-[718px] md:w-[418px] w-[164px]" />
 
-        <Marquee className="md:!hidden w-full flex flex-row justify-between  items-center !overflow-visible" direction="right">
+        {/* <Marquee className="md:!hidden w-full flex flex-row justify-between  items-center !overflow-visible" direction="right">
           {[0, 1, 2, 3].map((i) => (
             <div className="relative " key={i}>
               <div className="bg-[#ffe867]  lg:h-[110px] py-1 px-[10px] lg:w-auto w-[100px] flex items-center z-10">
@@ -166,8 +166,8 @@ export default function Home() {
               </p>
             </div>
           ))}
-        </Marquee>
-        <div className="relative md:block hidden">
+        </Marquee> */}
+        <div className="relative md:block ">
           <div className="bg-[#ffe867]  lg:h-[110px] py-1 px-[10px] lg:w-auto w-[100px] flex items-center z-10">
             <p className="text-[#886D00] lg:text-[128px]/[180px] text-[40px]/[28px] font-bold">MISI</p>
           </div>
@@ -200,20 +200,22 @@ export default function Home() {
 function Sponsor() {
   const sponsors = [
     { src: "/sponsors/dicoding.svg", alt: "Dicoding", maxWidth: "178px", minWidth: "56px" },
-    { src: "/sponsors/kahf.svg", alt: "Kahf", maxWidth: "135px", minWidth: "56px" },
-    { src: "/sponsors/allobank.svg", alt: "Allobank", maxWidth: "163px", minWidth: "56px" },
-    { src: "/sponsors/menyala.svg", alt: "Me.nyala", maxWidth: "130px", minWidth: "56px" },
-    { src: "/sponsors/ruru.svg", alt: "Ruru snack", maxWidth: "133px", minWidth: "56px" },
+    { src: "/sponsors/Dijait.png", alt: "Dijait", maxWidth: "135px", minWidth: "56px" },
+    { src: "/sponsors/kanght.png", alt: "KANGHT", maxWidth: "163px", minWidth: "56px" },
+    { src: "/sponsors/oppa.png", alt: "oppa", maxWidth: "130px", minWidth: "56px" },
+    { src: "/sponsors/rekapstore.png", alt: "Rekapstore", maxWidth: "133px", minWidth: "56px" },
+    { src: "/sponsors/OMG.png", alt: "OMG", maxWidth: "133px", minWidth: "56px" },
+    { src: "/sponsors/ss.png", alt: "ss", maxWidth: "133px", minWidth: "56px" },
   ];
   return (
     <div id="sponsor" className="bg-[#FFE867] w-full z-20  py-[20px]">
       <div className=" flex flex-col justify-center items-center">
         <AnimatedText2 text="Sponsor dan Mitra Kami" className="text-[#806D00] text-2xl" />
 
-        <div className="flex items-center flex-row lg:gap-[54px] gap-4 h-auto justify-between xl:w-[1220px] lg:w-[1255px] w-[327px] mt-4">
+        <div className="flex items-center flex-row flex-wrap lg:gap-[54px] gap-4 h-auto justify-between xl:w-[1220px] lg:w-[1255px] w-[327px] mt-4">
           {sponsors.map((sponsor, index) => (
             <div key={index} className="flex items-center ">
-              <img src={sponsor.src} alt={sponsor.alt} className={` h-auto hover:scale-110 transform duration-300 ease-out`} style={{ width: "100%", maxWidth: sponsor.maxWidth, minWidth: sponsor.minWidth }} />
+              <img src={sponsor.src} alt={sponsor.alt} className={`w-auto hover:scale-110 transform duration-300 ease-out h-[28px] md:h-[36px] lg:h-[64px]`} />
             </div>
           ))}
         </div>
@@ -383,7 +385,7 @@ function Sejarah() {
         <img src="/ornaments/Group 253.svg" alt="pixel" className="absolute lg:w-[128px] lg:-top-28 -top-11 w-[88px] left-0" />
         <img src="/ornaments/Group 253.svg" alt="pixel" className="absolute lg:w-[128px] w-[88px] lg:-top-28 -top-11  right-0 scale-x-[-1]" />
 
-        <div className="bg-[#FFE867] h-2 w-[1084px]"></div>
+        <div className="bg-[#FFE867] h-2 lg:w-[1084px] w-[343px]"></div>
         <div className="bg-[#F2F7FF] w-full lg:min-h-[400px] h-fit py-[100px]   flex items-center flex-col justify-center relative gap-8">
           <p className=" absolute lg:text-[300px] select-none text-[64px]" style={textStyle1}>
             KABINET
