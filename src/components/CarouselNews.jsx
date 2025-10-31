@@ -8,7 +8,7 @@ export const CarouselNewsx = ({ data }) => {
         <CarouselContent className="select-none gap-4 p-5">
           {data.map((item, index) => (
             <CarouselItem key={index} className="pl-2 md:basis-1/4 sm:basis-1/3 basis-[240px]">
-              <Card className="flex-col w-[240px] h-[348px] hover:shadow-2xl" link="https://www.instagram.com/">
+              <Card className="flex-col w-[240px] h-[348px] hover:shadow-2xl" link={item.link}>
                 <img
                   src={
                     item.image ||
@@ -47,7 +47,7 @@ export const CarouselNewsLatest = ({ data }) => {
         <CarouselContent className="select-none">
           {data.map((item, index) => (
             <CarouselItem key={index} className="basis-[100%]">
-              <Card link="https://www.instagram.com/" className="md:flex-row flex-col-reverse gap-3 w-full lg:h-[560px] overflow-hidden">
+              <Card link={item.link} className="md:flex-row flex-col-reverse gap-3 w-full lg:h-[560px] overflow-hidden">
                 <div className="flex flex-col justify-between md:ml-10 md:my-14 ml-5 my-7">
                   <div className="flex flex-col gap-4">
                     <span className="capitalize lg:text-lg text-sm">{item.postTags?.[0]?.title || "-"}</span>
