@@ -16,8 +16,8 @@ const PageNews = () => {
   useEffect(() => {
     // setIsLoading(true);
     axios
-      // .get(`${import.meta.env.VITE_API_URL}/news?page=1&limit=100&order=desc`)
-      .get("https://api.himarpl.org/api/v1/news?page=1&limit=100&order=desc")
+      .get(`${import.meta.env.VITE_API_URL}/news?page=1&limit=100&order=desc`)
+      // .get("https://api.himarpl.org/api/v1/news?page=1&limit=100&order=desc")
       .then((response) => {
         const allNews = response.data.data || [];
         setNews(allNews);
