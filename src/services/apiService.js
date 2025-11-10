@@ -15,7 +15,8 @@ export { api };
 // Fetch department details by type and acronym
 export const fetchDepartmentDetails = async (type, acronym) => {
   try {
-    const response = await axios.get(`${import.meta.env.VITE_API_URL}/departments?type=${type}&year=2025&acronym=${acronym}`);
+    const response = await axios.get(`https://api.himarpl.org/api/v1/departments?type=${type}&year=2025&acronym=${acronym}`);
+    // .get(`${import.meta.env.VITE_API_URL}/departments?type=${type}&year=2025&acronym=${acronym}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching department details:", error);
@@ -32,7 +33,9 @@ export const fetchDepartmentStaff = async (departmentId, deptName) => {
 
     const position = check ? "" : "staff";
     const [ketuawaketuRes, staffRes] = await Promise.all([
+      // axios.get(`https://api.himarpl.org/api/v1/users?departmentIds=${departmentId}&limit=50&positionNames=ketua%2Cwakil%20ketua&periodYears=2025`),
       axios.get(`${import.meta.env.VITE_API_URL}/users?departmentIds=${departmentId}&limit=50&positionNames=ketua%2Cwakil%20ketua&periodYears=2025`),
+      // axios.get(`https://api.himarpl.org/api/v1/users?departmentIds=${departmentId}&limit=50&positionNames=${position}&periodYears=2025`),
       axios.get(`${import.meta.env.VITE_API_URL}/users?departmentIds=${departmentId}&limit=50&positionNames=${position}&periodYears=2025`),
     ]);
 

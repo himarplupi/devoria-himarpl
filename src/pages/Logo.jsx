@@ -1,7 +1,6 @@
 import Transition from "@/components/Transition";
 import AnimatedImage from "../components/AnimatedImage";
 import AnimatedLongText from "../components/AnimatedLongText";
-import AnimatedText from "../components/AnimatedText";
 export default function Logo() {
   const logoPhilosophy = [
     {

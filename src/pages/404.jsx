@@ -1,5 +1,4 @@
 import AnimatedLongText from "../components/AnimatedLongText";
-// import AnimatedText from "../components/AnimatedText";
 import { Link } from "react-router-dom";
 export default function PageNotFound() {
   return (

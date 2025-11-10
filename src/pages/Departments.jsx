@@ -7,7 +7,7 @@ import { CardKepengurusan } from "../components/CardKepengurusan";
 import Transition from "@/components/Transition";
 import axios from "axios";
 
-export const Departments = () => {
+export default function Departments() {
   const location = useLocation();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -17,28 +17,26 @@ export const Departments = () => {
   const type = path === "/be" ? "be" : "dp";
 
   useEffect(() => {
+    let isMounted = true;
     const fetchKepengurusanData = async () => {
       try {
         setLoading(true);
-        setError(null);
 
         // Use the configured API instance from apiService
         const response = await axios.get(`${import.meta.env.VITE_API_URL}/departments?limit=50&type=${type}&year=2025`);
-
-        const data = response.data;
-        setKepengurusanData(data.data || []);
+        // .get(`https://api.himarpl.org/api/v1/departments?limit=50&type=${type}&year=2025`);
+        if (isMounted) setKepengurusanData(response.data.data || []);
       } catch (error) {
-        console.error("Error fetching data:", error);
-        setError(error.message || "An error occurred while fetching data");
-
-        // Set empty array as fallback
-        setKepengurusanData([]);
+        if (isMounted) setError(error.message);
       } finally {
-        setLoading(false);
+        if (isMounted) setLoading(false);
       }
     };
 
     fetchKepengurusanData();
+    return () => {
+      isMounted = false;
+    };
   }, [type]); // Re-fetch when type changes
 
   // Descriptions
@@ -85,7 +83,7 @@ export const Departments = () => {
 
   return (
     <>
-      <Transition />
+      {!loading && <Transition />}
       <div id="departments" className="bg-[url(/bg/Bg-Low.png)] pt-[108px] flex flex-col items-center pb-[150px] w-full ">
         <div className="flex flex-col items-center lg:w-[1210px] w-[343px] lg:gap-8 gap-6">
           <AnimatedLongText className="lg:text-7xl text-[32px] text-center text-[#4B4B4B] font-semibold" text={"STRUKTUR KEPENGURUSAN"} />
@@ -111,6 +109,4 @@ export const Departments = () => {
       </div>
     </>
   );
-};
-
-export default Departments;
+}

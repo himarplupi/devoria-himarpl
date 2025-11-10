@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import AnimatedText from "../components/AnimatedText";
+import { Link, useLocation } from "react-router-dom";
 import AnimatedLongText from "../components/AnimatedLongText";
 import AnimatedImage from "../components/AnimatedImage";
 import Transition from "@/components/Transition";
 
-export const Contacts = () => {
+export default function Contacts() {
+  const location = useLocation();
   return (
     <>
       {location.pathname === "/contact" && <Transition />}
@@ -41,4 +41,4 @@ export const Contacts = () => {
       </div>
     </>
   );
-};
+}
