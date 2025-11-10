@@ -79,14 +79,14 @@ function ParallaxImage({ children, baseVelocity = 2 }) {
         const containerWidth = containerRef.current.offsetWidth;
         const contentWidth = containerRef.current.scrollWidth / repeatCount;
         const newCount = Math.ceil(containerWidth / contentWidth) + 2;
-        setRepeatCount(newCount);
+        if (newCount !== repeatCount) setRepeatCount(newCount);
       }
     };
 
     calculateRepeatCount();
     window.addEventListener("resize", calculateRepeatCount);
     return () => window.removeEventListener("resize", calculateRepeatCount);
-  }, [children, repeatCount]);
+  }, [children]);
 
   useAnimationFrame((t, delta) => {
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
