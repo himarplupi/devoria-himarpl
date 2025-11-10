@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import emailjs from "emailjs-com";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
-const EmailForm = () => {
+export default function EmailForm() {
   const form = useRef();
   const [success, setSuccess] = useState(false);
 
@@ -102,6 +102,4 @@ const EmailForm = () => {
       )}
     </>
   );
-};
-
-export default EmailForm;
+}

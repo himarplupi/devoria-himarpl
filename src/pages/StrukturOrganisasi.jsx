@@ -1,13 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import AnimatedText from "../components/AnimatedText";
+import { useLocation } from "react-router-dom";
 import AnimatedLongText from "../components/AnimatedLongText";
 import AnimatedImage from "../components/AnimatedImage";
 import Transition from "@/components/Transition";
 
-export const StrukturOrganisasi = () => {
+export default function StrukturOrganisasi() {
   const [activeSection, setActiveSection] = useState("be");
-
+  const location = useLocation();
   return (
     <>
       {location.pathname === "/struktur" && <Transition />}
@@ -56,4 +56,4 @@ export const StrukturOrganisasi = () => {
       </div>
     </>
   );
-};
+}

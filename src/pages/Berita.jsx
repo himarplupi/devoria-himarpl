@@ -1,15 +1,12 @@
 import { useState, useEffect } from "react";
 import AnimatedLongText from "../components/AnimatedLongText";
-import AnimatedLongText2 from "../components/AnimatedLongText2";
 import { Link } from "react-router-dom";
-import { Card } from "../components/CardNews";
 // import { CarouselNews } from "../components/CarouselNews";
 import axios from "axios";
-import Loading from "@/components/LoadingSpinner";
 import Transition from "@/components/Transition";
 import { CarouselNewsLatest, CarouselNewsx } from "@/components/CarouselNews";
 
-const PageNews = () => {
+export default function PageNews() {
   const [news, setNews] = useState([]);
   // const [isLoading, setIsLoading] = useState(true);
 
@@ -66,6 +63,4 @@ const PageNews = () => {
       )}
     </>
   );
-};
-
-export default PageNews;
+}

@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import AnimatedLongText from "../components/AnimatedLongText";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { CardKepengurusan } from "../components/CardKepengurusan";
 import { Icon } from "@iconify/react";
 import useSmoothScroll from "../hooks/useSmoothScroll";
 import { useCallback, useRef } from "react";
 import AnimatedText from "../components/AnimatedText";
 import { fetchDepartmentDetails, fetchDepartmentStaff } from "../services/apiService";
-import { AnimatePresence, motion as Motion } from "motion/react";
 import ExpandableCard from "@/components/ExpandableCard";
 import Transition from "@/components/Transition";
 
@@ -15,6 +13,7 @@ export const DepartmentDetails = () => {
   const { slug } = useParams(); // Get department name from URL
   const navigate = useNavigate();
   const lastScroll = useRef(0);
+  const location = useLocation();
 
   // State management
   const [departmentStaffs, setDepartmentStaffs] = useState([]);
@@ -23,8 +22,7 @@ export const DepartmentDetails = () => {
   const [error, setError] = useState(null);
 
   // Determine type from current path
-  const currentPath = window.location.pathname;
-  const type = currentPath.startsWith("/be/") ? "be" : "dp";
+  const type = location.pathname.startsWith("/be/") ? "be" : "dp";
 
   useEffect(() => {
     const fetchData = async () => {
