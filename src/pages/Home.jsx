@@ -46,18 +46,18 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div>
       <SEO />
       <Transition />
       <div id="home" className="pt-[100px] bg-white flex flex-col items-center ">
         <div className="relative">
           <div className="flex md:flex-row flex-col lg:gap-32 gap-4 md:items-center justify-between items-start  lg:w-[1220px] lg:mx-[110px] mx-4">
             <div className="lg:max-w-[555px] flex flex-col gap-2">
-              {/* <AnimatedText text="HIMARPL" className="font-bold text-[40px]/[64px] lg:text-[56px]/[64px]" /> */}
-              <h1 className="sr-only">HIMARPL</h1>
-              <HyperText startOnView={true} duration={1500} className="font-bold text-[40px]/[64px] lg:text-[56px]/[64px]">
+              <AnimatedText text="HIMARPL" className="font-bold text-[40px]/[64px] lg:text-[56px]/[64px]" />
+              {/* <h1 className="sr-only">HIMARPL</h1> */}
+              {/* <HyperText startOnView={true} duration={1500} className="font-bold text-[40px]/[64px] lg:text-[56px]/[64px]">
                 HIMARPL
-              </HyperText>
+              </HyperText> */}
               <div className="bg-black p-2">
                 <AnimatedText text="Kabinet Devoria" className="font-bold text-[32px] lg:text-[56px]/[64px] text-white underline decoration-[#FFE867] decoration-2 underline-offset-8" />
               </div>
@@ -192,7 +192,7 @@ export default function Home() {
       <Sejarah />
 
       <Contacts />
-    </>
+    </div>
   );
 }
 
