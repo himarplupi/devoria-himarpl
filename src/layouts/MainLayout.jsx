@@ -25,7 +25,7 @@ export default function MainLayout() {
     [
       { to: "https://blog-himarpl.vercel.app/", label: "Blogs" },
       { to: "https://api.himarpl.org/", label: "API Documentation" },
-      { to: "https://aspirasi-himarpl.vercel.app/", label: "Aspirasi" },
+      { to: "https://aspirasihimarpl.vercel.app/#hima", label: "Aspirasi" },
       { to: "/contact", label: "Contacts" },
     ],
   ];
