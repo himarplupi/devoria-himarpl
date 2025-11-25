@@ -33,7 +33,7 @@ export default function Contacts() {
           </div>
 
           <div className="cursor-pointer md:flex hidden items-center justify-center px-6 py-4 rounded-2xl transition-transform duration-200 hover:scale-105 active:scale-95 hover:shadow-lg bg-black w-[231px]">
-            <Link to="/contact/submit">
+            <Link to="https://aspirasihimarpl.vercel.app/#hima">
               <p className="font-semibold text-white">Pelajari Selengkapnya</p>
             </Link>
           </div>
