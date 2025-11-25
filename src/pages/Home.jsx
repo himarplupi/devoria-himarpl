@@ -66,7 +66,12 @@ export default function Home() {
           </div>
 
           <div className="lg:mt-8 mt-6 relative lg:mb-[75px] mb-[48px]">
-            <AnimatedImage src="/himarpl/fullteam.jpeg" alt="Kabinet Devoria" loading="lazy" className="lg:w-[1220px] md:w-[680px] lg:mx-[110px] mx-4 w-[343px] rounded-3xl z-10" />
+            <AnimatedImage
+              src="https://cdn.jsdelivr.net/gh/himarplupi/assets-himarpl@main/www/bg/bg-home-devoria.jpeg"
+              alt="Kabinet Devoria"
+              loading="lazy"
+              className="lg:w-[1220px] md:w-[680px] lg:mx-[110px] mx-4 w-[343px] rounded-3xl z-10"
+            />
 
             <img src="/himarpl/HIMARPL.svg" alt="HIMARPL" className="lg:w-[1210px] md:w-[660px] w-[313px] absolute lg:top-[550px] md:top-[305px] lg:left-[130px] xl:left-[120px] top-[157px] left-[33px] z-20" />
             <AnimatedText style={textScrollDown} className="absolute md:text-[16px] text-[8px] lg:tracking-[28px] md:tracking-[18px] tracking-[8px] top-0 xl:left-[84px] lg:left-11 md:-left-2 left-0 font-bold" text="scrolldown" />
