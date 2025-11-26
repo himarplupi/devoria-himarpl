@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { CardKepengurusan } from "../components/CardKepengurusan";
 import { Icon } from "@iconify/react";
-import useSmoothScroll from "../hooks/useSmoothScroll";
-import { useCallback, useRef } from "react";
 import AnimatedText from "../components/AnimatedText";
 import { fetchDepartmentDetails, fetchDepartmentStaff } from "../services/apiService";
 import ExpandableCard from "@/components/ExpandableCard";
@@ -12,7 +10,6 @@ import Transition from "@/components/Transition";
 export const DepartmentDetails = () => {
   const { slug } = useParams(); // Get department name from URL
   const navigate = useNavigate();
-  const lastScroll = useRef(0);
   const location = useLocation();
 
   // State management
@@ -78,12 +75,6 @@ export const DepartmentDetails = () => {
     }
   }, [type, slug]);
 
-  const handleScroll = useCallback((scrollY) => {
-    lastScroll.current = scrollY;
-  }, []);
-
-  const scrollRef = useSmoothScroll(handleScroll);
-
   // Loading state
   if (loading) {
     return (
@@ -112,7 +103,7 @@ export const DepartmentDetails = () => {
     <>
       <Transition />
 
-      <div id="departmentdetails" className="bg-[url(/bg/Bg-Low.png)] min-h-screen w-full overflow-y-auto pt-[68px] flex flex-col items-center pb-[50px]" ref={scrollRef} style={{ height: "100vh" }}>
+      <div id="departmentdetails" className="bg-[url(/bg/Bg-Low.png)] min-h-screen w-full  pt-[68px] flex flex-col items-center pb-[50px]" style={{ height: "100vh" }}>
         <div className="flex flex-col items-center lg:w-[1210px] md:w-[660px] w-[343px] gap-8 relative">
           <div className="w-full">
             <div className="flex gap-4 items-center justify-start cursor-pointer hover:bg-gray-100 rounded-2xl py-1 w-fit" onClick={() => navigate(`/${type}`)}>
