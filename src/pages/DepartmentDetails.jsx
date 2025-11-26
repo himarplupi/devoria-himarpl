@@ -103,7 +103,7 @@ export const DepartmentDetails = () => {
     <>
       <Transition />
 
-      <div id="departmentdetails" className="bg-[url(/bg/Bg-Low.png)]  w-full  pt-[98px] flex flex-col items-center pb-[50px]">
+      <div id="departmentdetails" className="bg-[url(/bg/Bg-Low.png)]  w-full  pt-[98px] flex flex-col items-center pb-[150px]">
         <div className="flex flex-col items-center lg:w-[1210px] md:w-[660px] w-[343px] gap-8 relative">
           <div className="w-full">
             <div className="flex gap-4 items-center justify-start cursor-pointer hover:bg-gray-100 rounded-2xl py-1 w-fit" onClick={() => navigate(`/${type}`)}>
