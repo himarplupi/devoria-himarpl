@@ -25,10 +25,10 @@ function App() {
           <Route path="be" element={<Departments />} />
           <Route path="dp" element={<Departments />} />
           <Route path="*" element={<PageNotFound />} />
+          <Route path="/be/:slug" element={<DepartmentDetails />}></Route>
+          <Route path="/dp/:slug" element={<DepartmentDetails />}></Route>
         </Route>
         <Route path="/contact/submit" element={<EmailForm />} />
-        <Route path="/be/:slug" element={<DepartmentDetails />}></Route>
-        <Route path="/dp/:slug" element={<DepartmentDetails />}></Route>
       </Routes>
     </AnimatePresence>
   );
