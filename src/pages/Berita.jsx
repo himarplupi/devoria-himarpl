@@ -8,7 +8,7 @@ import { CarouselNewsLatest, CarouselNewsx } from "@/components/CarouselNews";
 
 export default function PageNews() {
   const [news, setNews] = useState([]);
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // setIsLoading(true);
@@ -22,10 +22,10 @@ export default function PageNews() {
       })
       .catch((error) => {
         console.error("Error fetching news:", error);
-      });
-    // .finally(() => {
-    //   setIsLoading(false);
-    // });
+      })
+    .finally(() => {
+      setIsLoading(false);
+    });
   }, []);
 
   // if (isLoading) {
@@ -42,7 +42,14 @@ export default function PageNews() {
     <>
       <Transition />
       {/* <Transition /> */}
-      {news.length === 0 ? (
+      {isLoading? (
+        <div className="flex flex-col items-center justify-center text-center min-h-screen">
+          <img src="/himarpl/Maskot3.png" alt="Sebentar yaa" className="w-50 h-50  opacity-70" />
+          <AnimatedLongText text={"Please wait a second"} className=" md:text-xl text-md text-center mb-5" />
+          </div>
+      ):
+      
+      news.length === 0 ? (
         <div className="flex flex-col items-center justify-center text-center min-h-screen">
           <img src="/himarpl/Maskot4.1.png" alt="Belum ada berita" className="w-50 h-50  opacity-70" />
           <AnimatedLongText text={"There is no news yet"} className=" md:text-xl text-md text-center mb-5" />
