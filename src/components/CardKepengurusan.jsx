@@ -3,10 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 export const CardKepengurusan = ({ img, department, nama, deptType, username }) => {
   const location = useLocation();
   const linkRoute = `/${deptType}/${department.toLowerCase()}`;
-
-  const isSlugRoute = /^\/be\/.+\/?$/.test(location.pathname) || /^\/dp\/.+\/?$/.test(location.pathname);
-  const isCurrentRoute = location.pathname === linkRoute;
-  const shouldShowButton = !isSlugRoute && !isCurrentRoute;
+  const shouldShowButton = location.pathname === "/dp" || location.pathname === "/be";
 
   return (
     <div className="flex flex-col gap-6 lg:max-h-[676px] lg:w-[400px]">
@@ -24,13 +21,13 @@ export const CardKepengurusan = ({ img, department, nama, deptType, username }) 
             <h4 className="text-black text-4xl font-extrabold">{department}</h4>
           </div>
         </div>
-        <div className="flex flex-row gap-5 bg-[#141414]  justify-between items-center w-full h-fit">
+        <div className={`flex flex-row gap-5 bg-[#141414]  ${location.pathname === "/be" || location.pathname === "/dp" || location.pathname === "/awarding" ? "justify-center" : "justify-between"} items-center w-full h-fit`}>
           {nama && (
-            <div className="w-[170px] items-start min-h-[50px]">
+            <div className={` ${location.pathname === "/be" || location.pathname === "/dp" || location.pathname === "/awarding" ? "" : "w-[170px] items-start min-h-[50px]"}`}>
               <h2 className="text-white text-xl font-medium">{nama}</h2>
             </div>
           )}
-          <div className={`${location.pathname === "/be" || location.pathname === "/dp" ? "hidden" : "flex"} flex flex-row gap-3 `}>
+          <div className={`${location.pathname === "/be" || location.pathname === "/dp" || location.pathname === "/awarding" ? "hidden" : "flex"} flex flex-row gap-3 `}>
             <Link to={`https://www.instagram.com/${username}`} target="_blank">
               <img src="/icons/instagram.svg" alt="instagram" />
             </Link>
