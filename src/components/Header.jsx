@@ -12,6 +12,7 @@ export default function Header() {
     { to: "/berita", path: "berita", name: "Berita" },
     { to: "/struktur", path: "struktur", name: "Struktur Organisasi" },
     { to: "/contact", path: "contact", name: "Contacts" },
+    { to: "/awarding", path: "awarding", name: "Awards" },
   ];
 
   const aboutLinks = [

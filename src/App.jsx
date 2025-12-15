@@ -11,6 +11,7 @@ import { DepartmentDetails } from "./pages/DepartmentDetails";
 import PageNotFound from "./pages/404";
 import EmailForm from "./pages/EmailForm";
 import { AnimatePresence } from "motion/react";
+import Awarding from "./pages/Awarding";
 function App() {
   const location = useLocation();
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="contact" element={<Contacts />} />
           <Route path="berita" element={<PageNews />} />
           <Route path="logo" element={<Logo />} />
+          <Route path="awarding" element={<Awarding />} />
           <Route path="be" element={<Departments />} />
           <Route path="dp" element={<Departments />} />
           <Route path="*" element={<PageNotFound />} />
