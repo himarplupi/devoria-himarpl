@@ -70,7 +70,7 @@ export default function Awarding() {
 
         <div className="flex items-center justify-center w-full pt-5">
           <div className="flex flex-row flex-wrap lg:gap-x-4 lg:gap-y-12 justify-center my-10 lg:w-[1240px] w-[343px] gap-[55px]">
-            <CardKepengurusan img={nate} department={"Exec 1 Kabinet"} nama={"Cassius Thunder"} />
+            <CardKepengurusan img={nate} department={"Best Executive 1 Kabinet"} nama={"Cassius Thunder"} />
           </div>
         </div>
 
