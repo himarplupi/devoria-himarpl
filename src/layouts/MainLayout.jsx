@@ -33,7 +33,10 @@ export default function MainLayout() {
   const sosmedLinks = [
     { to: "https://www.instagram.com/himarpl", icon: "mdi:instagram" },
     { to: "https://www.tiktok.com/@himarpl", icon: "ic:baseline-tiktok" },
-    { to: "https://open.spotify.com/show/3U3iuQcBYyzC5c13UieYFQ?si=ac651a8e3cff407e", icon: "mdi:spotify" },
+    {
+      to: "https://open.spotify.com/show/3U3iuQcBYyzC5c13UieYFQ?si=ac651a8e3cff407e",
+      icon: "mdi:spotify",
+    },
     { to: "https://www.youtube.com/@himarpl", icon: "mdi:youtube" },
   ];
 
@@ -131,19 +134,10 @@ export default function MainLayout() {
   //   return () => document.removeEventListener("mousedown", handleClickOutside);
   // }, []);
 
-  return (
-    <>
-      <Header />
-      <ReactLenis>
-        {/* <div
-        id="scrollableDiv"
-        className="min-h-screen relative"
-        style={{
-          overflowX: "hidden",
-        }}
-      > */}
-        {/* mobile sidebar */}
-        {/* <div className={`md:hidden fixed top-0 left-0 w-full h-full z-[90] transition-all duration-600 ${openSidebar ? "translate-x-0 " : "-translate-x-full"}`} onClick={() => setOpenSidebar(false)}>
+  const mainContent = (
+    <div className="min-h-screen flex flex-col lg:pt-[50px] pt-10">
+      {/* mobile sidebar */}
+      {/* <div className={`md:hidden fixed top-0 left-0 w-full h-full z-[90] transition-all duration-600 ${openSidebar ? "translate-x-0 " : "-translate-x-full"}`} onClick={() => setOpenSidebar(false)}>
           <div
             ref={sideBarRef}
             className={`fixed top-0 left-0 h-full w-[65%] bg-[#222222] pt-10 flex flex-col items-center transform transition-all duration-300 ${openSidebar ? "translate-x-0" : "-translate-x-full"}`}
@@ -210,7 +204,7 @@ export default function MainLayout() {
           </div>
         </div> */}
 
-        {/* <div className={`fixed top-8 z-50 transition-transform duration-500 w-full flex justify-center px-6 md:px-10 ${showNavbar ? "translate-y-0" : "-translate-y-[115px] "}`}>
+      {/* <div className={`fixed top-8 z-50 transition-transform duration-500 w-full flex justify-center px-6 md:px-10 ${showNavbar ? "translate-y-0" : "-translate-y-[115px] "}`}>
             <div
               className={`  bg-white flex flex-row gap-32 justify-between items-center max-w-[1220px] w-full border border-[#A7A7A7] rounded-2xl lg:gap-auto  drop-shadow(0px_4px_12px_rgba(0,0,0,0.04)) lg:flex-row lg:px-0 px-4 min-w-[343px] h-[70px]`}
             >
@@ -275,110 +269,176 @@ export default function MainLayout() {
             </div>
           </div> */}
 
-        <Outlet />
+      <Outlet />
 
-        <footer className="w-full bg-[#232323] lg:pb-5 pb-4 lg:pt-14 pt-5 lg:px-[72px] px-4 flex flex-col">
-          <div className="flex flex-row items-center justify-between border-b border-[#B2B2B2] pb-5">
-            <div className="flex flex-col items-start justify-between md:h-[194px]">
-              <img src="/himarpl/logo hima.png" alt="HIMARPL" className="max-w-[200px]" />
-              <div className="lg:w-[416px] w-[343px]">
-                <p className="text-white lg:text-base/[24px] text-[12px]/[24px]">Himpunan Mahasiswa Rekayasa Perangkat Lunak Universitas Pendidikan Indonesia </p>
-              </div>
+      <footer className="w-full bg-[#232323] lg:pb-5 pb-4 lg:pt-14 pt-5 lg:px-[72px] px-4 flex flex-col">
+        <div className="flex flex-row items-center justify-between border-b border-[#B2B2B2] pb-5">
+          <div className="flex flex-col items-start justify-between md:h-[194px]">
+            <img
+              src="/himarpl/logo hima.png"
+              alt="HIMARPL"
+              className="max-w-[200px]"
+            />
+            <div className="lg:w-[416px] w-[343px]">
+              <p className="text-white lg:text-base/[24px] text-[12px]/[24px]">
+                Himpunan Mahasiswa Rekayasa Perangkat Lunak Universitas
+                Pendidikan Indonesia{" "}
+              </p>
+            </div>
 
-              <div className="md:hidden flex mt-9 flex-row gap-[64px]">
-                <div className="flex flex-col gap-6">
+            <div className="md:hidden flex mt-9 flex-row gap-[64px]">
+              <div className="flex flex-col gap-6">
+                <div className="flex flex-row gap-4">
+                  {sosmedLinks.map((link, i) => (
+                    <NavLink
+                      to={link.to}
+                      key={i}
+                      className="flex items-center justify-center w-8 h-8 bg-white rounded-full p-2"
+                    >
+                      <Icon
+                        icon={link.icon}
+                        className="text-black w-4 h-4 hover:text-gray-500 transition-all duration-150"
+                      />
+                    </NavLink>
+                  ))}
+                </div>
+
+                <div className="flex flex-col gap-2">
                   <div className="flex flex-row gap-4">
-                    {sosmedLinks.map((link, i) => (
-                      <NavLink to={link.to} key={i} className="flex items-center justify-center w-8 h-8 bg-white rounded-full p-2">
-                        <Icon icon={link.icon} className="text-black w-4 h-4 hover:text-gray-500 transition-all duration-150" />
-                      </NavLink>
-                    ))}
-                  </div>
+                    <Icon
+                      icon="mdi:email-outline"
+                      className="text-white w-6 h-6"
+                    />
 
-                  <div className="flex flex-col gap-2">
-                    <div className="flex flex-row gap-4">
-                      <Icon icon="mdi:email-outline" className="text-white w-6 h-6" />
-
-                      <div className="relative group transition-all ">
-                        <span className="h-[2px] inline-block bg-white absolute left-0 bottom-0.5 group-hover:w-full transition-[width] ease duration-300 w-0">&nbsp;</span>
-                        <a href="mailto:himarpl@upi.edu" className="text-white text-base/[24px]">
-                          himarpl@upi.edu
-                        </a>
-                      </div>
-                    </div>
-                    <div className="flex flex-row gap-4">
-                      <Icon icon="mingcute:phone-line" className="text-white w-6 h-6" />
-                      <div className="relative group transition-all ">
-                        <span className="h-[2px] inline-block bg-white absolute left-0 bottom-0.5 group-hover:w-full transition-[width] ease duration-300 w-0">&nbsp;</span>
-                        <a href="https://wa.me/6281312768360" className="text-white text-base/[24px]">
-                          +62 813-1276-8360
-                        </a>
-                      </div>
+                    <div className="relative group transition-all ">
+                      <span className="h-[2px] inline-block bg-white absolute left-0 bottom-0.5 group-hover:w-full transition-[width] ease duration-300 w-0">
+                        &nbsp;
+                      </span>
+                      <a
+                        href="mailto:himarpl@upi.edu"
+                        className="text-white text-base/[24px]"
+                      >
+                        himarpl@upi.edu
+                      </a>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              <div className="md:flex hidden flex-col gap-2">
-                <div className="flex flex-row gap-4">
-                  <Icon icon="mdi:email-outline" className="text-white w-6 h-6" />
-                  <div className="relative group transition-all ">
-                    <span className="h-[2px] inline-block bg-white absolute left-0 bottom-0.5 group-hover:w-full transition-[width] ease duration-300 w-0">&nbsp;</span>
-                    <a href="mailto:himarpl@upi.edu" className="text-white text-base/[24px]">
-                      himarpl@upi.edu
-                    </a>
-                  </div>
-                </div>
-                <div className="flex flex-row gap-4">
-                  <Icon icon="mingcute:phone-line" className="text-white w-6 h-6" />
-                  <div className="relative group transition-all ">
-                    <span className="h-[2px] inline-block bg-white absolute left-0 bottom-0.5 group-hover:w-full transition-[width] ease duration-300 w-0">&nbsp;</span>
-                    <a href="https://wa.me/6281312768360" className="text-white text-base/[24px] ">
-                      +62 813-1276-8360
-                    </a>
+                  <div className="flex flex-row gap-4">
+                    <Icon
+                      icon="mingcute:phone-line"
+                      className="text-white w-6 h-6"
+                    />
+                    <div className="relative group transition-all ">
+                      <span className="h-[2px] inline-block bg-white absolute left-0 bottom-0.5 group-hover:w-full transition-[width] ease duration-300 w-0">
+                        &nbsp;
+                      </span>
+                      <a
+                        href="https://wa.me/6281312768360"
+                        className="text-white text-base/[24px]"
+                      >
+                        +62 813-1276-8360
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="md:flex hidden flex-row gap-16">
-              {footerLinks.map((section, i) => (
-                <div key={i} className="flex flex-col gap-4">
-                  {section.map((link, j) => (
-                    <div key={j} className="cursor-pointer relative group transition-all ">
-                      <span className="h-[2px] inline-block bg-[#6C6C6C] absolute left-0 bottom-0.5 group-hover:w-full transition-[width] ease duration-300 w-0">&nbsp;</span>
-
-                      <NavLink to={link.to} className="text-[#6C6C6C] font-medium" target="_blank">
-                        {link.label}
-                      </NavLink>
-                    </div>
-                  ))}
-                </div>
-              ))}
-
+            <div className="md:flex hidden flex-col gap-2">
               <div className="flex flex-row gap-4">
-                {sosmedLinks.map((link, i) => (
-                  <NavLink to={link.to} key={i} className="flex items-center justify-center w-8 h-8 bg-white rounded-full p-2">
-                    <Icon icon={link.icon} className="text-black w-4 h-4 hover:text-gray-500 transition-all duration-150" />
-                  </NavLink>
-                ))}
+                <Icon icon="mdi:email-outline" className="text-white w-6 h-6" />
+                <div className="relative group transition-all ">
+                  <span className="h-[2px] inline-block bg-white absolute left-0 bottom-0.5 group-hover:w-full transition-[width] ease duration-300 w-0">
+                    &nbsp;
+                  </span>
+                  <a
+                    href="mailto:himarpl@upi.edu"
+                    className="text-white text-base/[24px]"
+                  >
+                    himarpl@upi.edu
+                  </a>
+                </div>
+              </div>
+              <div className="flex flex-row gap-4">
+                <Icon
+                  icon="mingcute:phone-line"
+                  className="text-white w-6 h-6"
+                />
+                <div className="relative group transition-all ">
+                  <span className="h-[2px] inline-block bg-white absolute left-0 bottom-0.5 group-hover:w-full transition-[width] ease duration-300 w-0">
+                    &nbsp;
+                  </span>
+                  <a
+                    href="https://wa.me/6281312768360"
+                    className="text-white text-base/[24px] "
+                  >
+                    +62 813-1276-8360
+                  </a>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-row items-center justify-between mt-5">
-            <p className="text-[#747474] lg:text-base/[24px] text-[10px]">&copy; Copyright 2025 HIMARPL all rights reserved.</p>
-            {/* <div className="lg:flex hidden flex-row gap-4">
+          <div className="md:flex hidden flex-row gap-16">
+            {footerLinks.map((section, i) => (
+              <div key={i} className="flex flex-col gap-4">
+                {section.map((link, j) => (
+                  <div
+                    key={j}
+                    className="cursor-pointer relative group transition-all "
+                  >
+                    <span className="h-[2px] inline-block bg-[#6C6C6C] absolute left-0 bottom-0.5 group-hover:w-full transition-[width] ease duration-300 w-0">
+                      &nbsp;
+                    </span>
+
+                    <NavLink
+                      to={link.to}
+                      className="text-[#6C6C6C] font-medium"
+                      target="_blank"
+                    >
+                      {link.label}
+                    </NavLink>
+                  </div>
+                ))}
+              </div>
+            ))}
+
+            <div className="flex flex-row gap-4">
+              {sosmedLinks.map((link, i) => (
+                <NavLink
+                  to={link.to}
+                  key={i}
+                  className="flex items-center justify-center w-8 h-8 bg-white rounded-full p-2"
+                >
+                  <Icon
+                    icon={link.icon}
+                    className="text-black w-4 h-4 hover:text-gray-500 transition-all duration-150"
+                  />
+                </NavLink>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-row items-center justify-between mt-5">
+          <p className="text-[#747474] lg:text-base/[24px] text-[10px]">
+            &copy; Copyright 2025 HIMARPL all rights reserved.
+          </p>
+          {/* <div className="lg:flex hidden flex-row gap-4">
               {sosmedLinks.map((link, i) => (
                 <NavLink key={i} to={link.to} target="_blank">
                   <Icon icon={link.icon} className="text-[#747474] w-4 h-4 hover:text-white transition-all duration-150" />
                 </NavLink>
               ))}
             </div> */}
-          </div>
-        </footer>
-      </ReactLenis>
-      {/* </div> */}
+        </div>
+      </footer>
+    </div>
+  );
+
+  return (
+    <>
+      <Header />
+      <ReactLenis>{mainContent}</ReactLenis>
     </>
   );
 }
