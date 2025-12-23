@@ -42,8 +42,20 @@ export const CardKepengurusan = ({
             loading={loading}
             decoding="async"
           />
-          <div className="bg-[url(/bg/Bg-Fit-Low.png)] bg-cover flex flex-col justify-center items-center w-full h-[60px] rounded-b-2xl">
-            <h4 className="text-black text-4xl font-extrabold">{department}</h4>
+          <div className="bg-[url(/bg/Bg-Fit-Low.png)] bg-cover flex flex-col justify-center items-center w-full min-h-[60px] py-2 px-3 rounded-b-2xl">
+            <h4
+              className={`text-black font-extrabold text-center leading-tight ${
+                department?.length > 20
+                  ? "text-lg"
+                  : department?.length > 15
+                  ? "text-xl"
+                  : department?.length > 10
+                  ? "text-2xl"
+                  : "text-4xl"
+              }`}
+            >
+              {department}
+            </h4>
           </div>
         </div>
         <div

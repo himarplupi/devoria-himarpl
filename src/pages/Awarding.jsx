@@ -16,14 +16,18 @@ import { motion as Motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 
 export default function Awarding() {
-  // Assets to preload
+  // Assets to preload - only critical above-the-fold assets
+  // Other images will lazy-load as user scrolls
   const assetsToPreload = [
     "/awarding/kominfo-motion.mp4",
     "https://cdn.jsdelivr.net/gh/himarplupi/assets-himarpl@main/images/department-2025/be/kominfo.jpg",
     "https://cdn.jsdelivr.net/gh/himarplupi/assets-himarpl@main/images/users-2025/be/kominfo-5.jpg",
     "https://cdn.jsdelivr.net/gh/himarplupi/assets-himarpl@main/images/users-2025/be/ppm-5.jpg",
     "https://cdn.jsdelivr.net/gh/himarplupi/assets-himarpl@main/images/users-2025/be/ekraf-4.jpg",
-    "https://cdn.jsdelivr.net/gh/himarplupi/assets-himarpl@main/images/users-2025/be/psdo-1.jpg",
+    "https://cdn.jsdelivr.net/gh/himarplupi/assets-himarpl@main/images/users-2025/dp/burt-3.jpg",
+    "https://cdn.jsdelivr.net/gh/himarplupi/assets-himarpl@main/images/users-2025/dp/baleg-2.jpg",
+    "https://cdn.jsdelivr.net/gh/himarplupi/assets-himarpl@main/images/users-2025/dp/komisi-8.jpg",
+    "https://cdn.jsdelivr.net/gh/himarplupi/assets-himarpl@main/images/users-2025/dp/komisi-1.jpg",
   ];
 
   const awardingData = [
@@ -84,6 +88,29 @@ export default function Awarding() {
       name: "Ica",
       award: "Triwulan 3",
       img: "https://cdn.jsdelivr.net/gh/himarplupi/assets-himarpl@main/images/users-2025/be/ekraf-4.jpg",
+    },
+  ];
+
+  const dewanAward = [
+    {
+      name: "Harits",
+      award: "Staff of Composure",
+      img: "https://cdn.jsdelivr.net/gh/himarplupi/assets-himarpl@main/images/users-2025/dp/burt-3.jpg",
+    },
+    {
+      name: "Regina",
+      award: "Staff of Precision",
+      img: "https://cdn.jsdelivr.net/gh/himarplupi/assets-himarpl@main/images/users-2025/dp/baleg-2.jpg",
+    },
+    {
+      name: "Silva",
+      award: "Staff of Silent Dedication",
+      img: "https://cdn.jsdelivr.net/gh/himarplupi/assets-himarpl@main/images/users-2025/dp/komisi-8.jpg",
+    },
+    {
+      name: "Firdan",
+      award: "Head of Excellence",
+      img: "https://cdn.jsdelivr.net/gh/himarplupi/assets-himarpl@main/images/users-2025/dp/komisi-1.jpg",
     },
   ];
 
@@ -242,6 +269,131 @@ export default function Awarding() {
       </HorizontalScrollSection>
 
       <div className="bg-[url(/bg/Bg-Low.png)] bg-cover bg-fixed flex flex-col items-center w-full">
+        {/* ==================== DEWAN AWARD HERO ==================== */}
+        <DewanHeroSection />
+
+        {/* ==================== DEWAN INTRO NARRATION ==================== */}
+        <ScrollSection
+          animation="fadeUp"
+          className="max-w-4xl px-6 mb-32 mt-16"
+        >
+          <ScrollNarration
+            text="Dewan Award merupakan penghargaan yang diberikan pada anggota dewan perwakilan HIMARPL terbaik berdasarkan pada performa dari masing-masing kategorinya selama satu periode kepengurusan."
+            className="text-center text-black font-light lg:text-5xl text-3xl leading-relaxed"
+            revealType="word"
+          />
+        </ScrollSection>
+
+        {/* ==================== STAFF OF COMPOSURE ==================== */}
+        <ScrollSection animation="fadeLeft" className="mb-6 mt-64">
+          <ParallaxText speed={0.2}>
+            <h2 className="lg:text-8xl text-4xl text-center text-[#4B4B4B] font-bold tracking-tight">
+              STAFF OF COMPOSURE
+            </h2>
+          </ParallaxText>
+        </ScrollSection>
+
+        <ScrollSection animation="fade" className="mb-8 px-6 max-w-3xl">
+          <p className="text-center text-[#6B6B6B] lg:text-xl text-lg italic">
+            Ketenangan dalam menghadapi tantangan, kebijaksanaan dalam bertindak
+          </p>
+        </ScrollSection>
+
+        <ScrollRevealCard direction="up" className="mb-32 flex justify-center">
+          <MysteryCard department="STAFF OF COMPOSURE">
+            <CardKepengurusan
+              loading="eager"
+              img={dewanAward[0].img}
+              department={dewanAward[0].award?.toUpperCase()}
+              nama={dewanAward[0].name?.toUpperCase()}
+            />
+          </MysteryCard>
+        </ScrollRevealCard>
+
+        {/* ==================== STAFF OF PRECISION ==================== */}
+        <ScrollSection animation="fadeRight" className="mb-6 mt-64">
+          <ParallaxText speed={0.25}>
+            <h2 className="lg:text-8xl text-4xl text-center text-[#4B4B4B] font-bold tracking-tight">
+              STAFF OF PRECISION
+            </h2>
+          </ParallaxText>
+        </ScrollSection>
+
+        <ScrollSection animation="fade" className="mb-8 px-6 max-w-3xl">
+          <p className="text-center text-[#6B6B6B] lg:text-xl text-lg italic">
+            Ketelitian tanpa cela, kesempurnaan dalam setiap detail
+          </p>
+        </ScrollSection>
+
+        <ScrollRevealCard
+          direction="left"
+          className="mb-32 flex justify-center"
+        >
+          <MysteryCard department="STAFF OF PRECISION">
+            <CardKepengurusan
+              loading="eager"
+              img={dewanAward[1].img}
+              department={dewanAward[1].award?.toUpperCase()}
+              nama={dewanAward[1].name?.toUpperCase()}
+            />
+          </MysteryCard>
+        </ScrollRevealCard>
+
+        {/* ==================== STAFF OF SILENT DEDICATION ==================== */}
+        <ScrollSection animation="fadeUp" className="mb-6 mt-64">
+          <ParallaxText speed={0.3}>
+            <h2 className="lg:text-7xl text-3xl text-center text-[#4B4B4B] font-bold tracking-tight">
+              STAFF OF SILENT DEDICATION
+            </h2>
+          </ParallaxText>
+        </ScrollSection>
+
+        <ScrollSection animation="fade" className="mb-8 px-6 max-w-3xl">
+          <p className="text-center text-[#6B6B6B] lg:text-xl text-lg italic">
+            Dedikasi tanpa gembar-gembor, kontribusi yang berbicara lebih keras
+          </p>
+        </ScrollSection>
+
+        <ScrollRevealCard
+          direction="right"
+          className="mb-32 flex justify-center"
+        >
+          <MysteryCard department="STAFF OF SILENT DEDICATION">
+            <CardKepengurusan
+              loading="eager"
+              img={dewanAward[2].img}
+              department={dewanAward[2].award?.toUpperCase()}
+              nama={dewanAward[2].name?.toUpperCase()}
+            />
+          </MysteryCard>
+        </ScrollRevealCard>
+
+        {/* ==================== HEAD OF EXCELLENCE ==================== */}
+        <ScrollSection animation="fadeUp" className="mb-6 mt-64">
+          <ParallaxText speed={0.35}>
+            <h2 className="lg:text-8xl text-4xl text-center text-[#4B4B4B] font-bold tracking-tight">
+              HEAD OF EXCELLENCE
+            </h2>
+          </ParallaxText>
+        </ScrollSection>
+
+        <ScrollSection animation="fade" className="mb-8 px-6 max-w-3xl">
+          <p className="text-center text-[#6B6B6B] lg:text-xl text-lg italic">
+            Kepemimpinan yang menginspirasi, standar tinggi yang tak tertandingi
+          </p>
+        </ScrollSection>
+
+        <ScrollRevealCard direction="up" className="mb-32 flex justify-center">
+          <MysteryCard department="HEAD OF EXCELLENCE">
+            <CardKepengurusan
+              loading="eager"
+              img={dewanAward[3].img}
+              department={dewanAward[3].award?.toUpperCase()}
+              nama={dewanAward[3].name?.toUpperCase()}
+            />
+          </MysteryCard>
+        </ScrollRevealCard>
+
         {/* ==================== CLOSING ==================== */}
         <div className="py-96 px-6">
           <ScrollSection animation="fadeUp" className="max-w-3xl mx-auto">
@@ -373,7 +525,6 @@ function HeroSection() {
         2025
       </Motion.p>
 
-      {/* Scroll indicator */}
       <Motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 10, 0] }}
@@ -387,5 +538,122 @@ function HeroSection() {
         <div className="w-[1px] h-12 bg-gradient-to-b from-[#9B9B9B] to-transparent" />
       </Motion.div>
     </Motion.div>
+  );
+}
+
+/**
+ * DewanHeroSection - Animated hero for Dewan Award section
+ * Animations trigger when scrolling into view
+ */
+function DewanHeroSection() {
+  const letterVariants = {
+    hidden: { opacity: 0, y: 100, rotateX: -45 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      rotateX: 0,
+      transition: {
+        delay: 0.3 + i * 0.05,
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1],
+      },
+    }),
+  };
+
+  const titleWords = ["DEWAN", "AWARD"];
+  const subtitleWords = ["KABINET", "DEVORIA"];
+
+  return (
+    <div className="min-h-[80vh] flex flex-col items-center justify-center pt-32 pb-16 relative">
+      {/* Particles background */}
+      <Particles
+        className="absolute inset-0 z-0"
+        quantity={60}
+        staticity={40}
+        ease={70}
+        size={0.5}
+        color="#6B6B6B"
+      />
+
+      {/* Main Title - DEWAN AWARD */}
+      <div className="relative z-10 flex flex-wrap justify-center gap-4 lg:gap-8 mb-4">
+        {titleWords.map((word, wordIndex) => (
+          <Motion.div
+            key={wordIndex}
+            className="flex overflow-hidden"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.8 }}
+          >
+            {word.split("").map((char, charIndex) => (
+              <Motion.span
+                key={charIndex}
+                custom={wordIndex * 10 + charIndex}
+                variants={letterVariants}
+                className="text-[#4B4B4B] text-5xl lg:text-9xl font-black tracking-tight"
+                style={{ display: "inline-block" }}
+              >
+                {char}
+              </Motion.span>
+            ))}
+          </Motion.div>
+        ))}
+      </div>
+
+      {/* Subtitle in black box - KABINET DEVORIA only */}
+      <Motion.div
+        initial={{ scaleX: 0, opacity: 0 }}
+        whileInView={{ scaleX: 1, opacity: 1 }}
+        viewport={{ once: true, amount: 0.8 }}
+        transition={{ delay: 0.8, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+        className="bg-black px-6 lg:px-12 py-3 lg:py-4 origin-center relative z-10"
+      >
+        <div className="flex gap-4 lg:gap-8">
+          {subtitleWords.map((word, wordIndex) => (
+            <Motion.div
+              key={wordIndex}
+              className="flex overflow-hidden"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.8 }}
+            >
+              {word.split("").map((char, charIndex) => (
+                <Motion.span
+                  key={charIndex}
+                  custom={20 + wordIndex * 10 + charIndex}
+                  variants={letterVariants}
+                  className="text-white text-2xl lg:text-6xl font-bold tracking-wide"
+                  style={{ display: "inline-block" }}
+                >
+                  {char}
+                </Motion.span>
+              ))}
+            </Motion.div>
+          ))}
+        </div>
+      </Motion.div>
+
+      {/* HIMARPL UPI */}
+      <Motion.p
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.8 }}
+        transition={{ delay: 1.4, duration: 0.8 }}
+        className="text-[#4B4B4B] text-lg lg:text-3xl font-semibold tracking-[0.2em] mt-8 relative z-10"
+      >
+        HIMARPL UPI
+      </Motion.p>
+
+      {/* Year */}
+      <Motion.p
+        initial={{ opacity: 0, scale: 0.5 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, amount: 0.8 }}
+        transition={{ delay: 1.6, duration: 0.6, ease: "backOut" }}
+        className="text-[#4B4B4B] text-4xl lg:text-7xl font-bold mt-4 relative z-10"
+      >
+        2025
+      </Motion.p>
+    </div>
   );
 }

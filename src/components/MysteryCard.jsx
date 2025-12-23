@@ -165,8 +165,18 @@ function MysteryOverlay({ department }) {
             </div>
 
             {/* Department label */}
-            <div className="bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] flex flex-col justify-center items-center w-full h-[60px] rounded-b-2xl border-t border-white/10">
-              <h4 className="text-white/60 text-4xl font-extrabold">
+            <div className="bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] flex flex-col justify-center items-center w-full min-h-[60px] py-2 px-3 rounded-b-2xl border-t border-white/10">
+              <h4
+                className={`text-white/60 font-extrabold text-center leading-tight ${
+                  department?.length > 20
+                    ? "text-lg"
+                    : department?.length > 15
+                    ? "text-xl"
+                    : department?.length > 10
+                    ? "text-2xl"
+                    : "text-4xl"
+                }`}
+              >
                 {department}
               </h4>
             </div>
