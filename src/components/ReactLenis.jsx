@@ -10,7 +10,7 @@ export function ReactLenis({ children }) {
         },
       }}
       style={{ touchAction: "pan-y" }}
-      className="h-screen overflow-y-scroll flex flex-col justify-center items-center lg:pt-[50px] pt-10"
+      className="min-h-screen flex flex-col lg:pt-[50px] pt-10"
       root
     >
       {children}
