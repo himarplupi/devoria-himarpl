@@ -62,9 +62,9 @@ export default function Awarding() {
       img: "https://cdn.jsdelivr.net/gh/himarplupi/assets-himarpl@main/images/users-2025/be/ekraf-3.jpg",
     },
     {
-      name: "Karina",
+      name: "Masda",
       award: "Best PPM",
-      img: "https://cdn.jsdelivr.net/gh/himarplupi/assets-himarpl@main/images/users-2025/be/ppm-5.jpg",
+      img: "https://cdn.jsdelivr.net/gh/himarplupi/assets-himarpl@main/images/users-2025/be/ppm-2.jpg",
     },
     {
       name: "Kautsar",
