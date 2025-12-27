@@ -150,9 +150,7 @@ export function ScrollHero({ children, className = "" }) {
  * ScrollCounter - Animated number counter
  */
 export function ScrollCounter({
-  from = 0,
   to,
-  duration = 2,
   className = "",
   suffix = "",
   prefix = "",
