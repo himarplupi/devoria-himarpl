@@ -332,10 +332,10 @@ export default function MainLayout() {
                         &nbsp;
                       </span>
                       <a
-                        href="https://wa.me/6281312768360"
+                        href="https://wa.me/6287823151803"
                         className="text-white text-base/[24px]"
                       >
-                        +62 813-1276-8360
+                        +62 878-2315-1803
                       </a>
                     </div>
                   </div>
